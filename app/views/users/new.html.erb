@@ -10,16 +10,26 @@
 
         <!-- %= f.error_summary % % -->
 
-        <%= f.text_field :first, hide_label: true, placeholder:"First Name"%>
+        <%= f.text_field :first, hide_label: true, onclick:"var x = document.getElementsByClassName('form-group')[0];
+        x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
+                         placeholder:"First Name"%>
 
 
-        <%= f.text_field :last, hide_label: true, placeholder:"Last Name" %>
+        <%= f.text_field :last, hide_label: true,
+                         onclick:"var x = document.getElementsByClassName('form-group')[1];
+        x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
+                         placeholder:"Last Name" %>
 
 
-        <%= f.email_field :email, onclick:"var x = document.getElementsByClassName('form-group')[2];  x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();", hide_label: true, placeholder:"Email" %>
+        <%= f.email_field :email, onclick:"var x = document.getElementsByClassName('form-group')[2];
+        x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
+                          hide_label: true, placeholder:"Email" %>
 
 
-        <%= f.password_field :password, hide_label: true, placeholder:"Password" %>
+        <%= f.password_field :password, hide_label: true,
+                             onclick:"var x = document.getElementsByClassName('form-group')[3];
+        x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
+                             placeholder:"Password" %>
 
 
         <%= f.password_field :password_confirmation, hide_label: true, placeholder:"Confirm Password" %>
