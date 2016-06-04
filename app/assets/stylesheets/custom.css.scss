@@ -86,3 +86,9 @@ fieldset[disabled] .btn.active {
   background-color: #f8fffa;
 }
 
+form label.error{
+  font:10px Tahoma,sans-serif;
+  color:#ED7476;
+  margin-left:5px;
+  display:inline;
+}

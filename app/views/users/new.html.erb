@@ -4,9 +4,11 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
     <h3>Sign up</h3>
-    <%= bootstrap_form_for(@user) do |f| %>
-        <%= render 'shared/error_messages' %>
+    <%= bootstrap_form_for(@user, label_errors: false) do |f| %>
 
+
+
+        <!-- %= f.error_summary % % -->
 
         <%= f.text_field :first, hide_label: true, placeholder:"First Name"%>
 
@@ -14,13 +16,13 @@
         <%= f.text_field :last, hide_label: true, placeholder:"Last Name" %>
 
 
-        <%= f.email_field :email, hide_label: true, placeholder:"Email" %>
+        <%= f.email_field :email, onclick:"var x = document.getElementsByClassName('form-group')[2];  x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();", hide_label: true, placeholder:"Email" %>
 
 
         <%= f.password_field :password, hide_label: true, placeholder:"Password" %>
 
 
-        <%= f.password_field :password_confirmation, hide_label: true, placeholder:"Confirm Password"%>
+        <%= f.password_field :password_confirmation, hide_label: true, placeholder:"Confirm Password" %>
 
         <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
