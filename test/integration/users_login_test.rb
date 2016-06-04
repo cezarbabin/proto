@@ -25,6 +25,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
         assert_redirected_to @user
         follow_redirect!
         assert_template 'users/show'
+        # Asserting presence of the link
         assert_select "a[href=?]", login_path, count: 0 #there is NO link to LOGIN
         assert_select "a[href=?]", logout_path #there IS a link to LOGOUT
         delete logout_path

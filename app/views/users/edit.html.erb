@@ -1,0 +1,23 @@
+<% provide(:title, "Edit user") %>
+
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= bootstrap_form_for(@user) do |f| %>
+        <h3>Update your profile</h3>
+
+        <%= f.text_field :first, class: 'form-control' %>
+
+        <%= f.text_field :last, class: 'form-control' %>
+
+        <%= f.email_field :email, class: 'form-control' %>
+
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+        <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+</div>
