@@ -4,7 +4,12 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
-  test "invalid signup information" do
+
+  def setup
+    @user = users(:michael)
+  end
+
+  test 'invalid signup information' do
     assert_no_difference 'User.count' do
       post users_path, user: { first:  "",
                                second: "",
@@ -22,7 +27,10 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                             email: "user@example.com",
                                             password:              "password",
                                             password_confirmation: "password" }
-    end
+      end
+    assert_template 'users/show'
+    assert is_logged_in?
+
   end
 
 end

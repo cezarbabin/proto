@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
       log_in @user
-      render 'static_pages/howto'
+      render 'show'
     else
       render 'new'
     end
