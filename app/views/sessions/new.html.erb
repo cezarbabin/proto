@@ -6,9 +6,10 @@
     <%= bootstrap_form_for(:session, url: login_path) do |f| %>
         <h3>Log in</h3>
 
-
+        <% flash.each do |message_type, message| %>
+            <div class="alert alert-<%= message_type %>"><%= message %>, try again.</div>
+        <% end %>
         <%= f.email_field :email, class: 'form-control', hide_label: true, placeholder:"Email" %>
-
 
         <%= f.password_field :password, class: 'form-control', hide_label: true, placeholder:"Password" %>
 
@@ -17,3 +18,5 @@
 
   </div>
 </div>
+
+<!--- onclick:"var x = document.getElementsByClassName('alert')[0].remove();", -->
