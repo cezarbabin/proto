@@ -14,6 +14,11 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to login_url
   end
 
+  test 'redirect to login if not logged in but trying to see' do
+    get :show, id: @user
+    assert_redirected_to login_url
+  end
+
   test 'redirect to login if cant patch' do
     patch :update, id: @user, user: {}
     assert_redirected_to login_url
@@ -22,6 +27,12 @@ class UsersControllerTest < ActionController::TestCase
   test 'try to edit as stranger' do
     log_in_as(@user2)
     get :edit, id: @user
+    assert_redirected_to root_url
+  end
+
+  test 'redirect to root if logged in but trying to see others info' do
+    log_in_as(@user2)
+    get :show, id: @user
     assert_redirected_to root_url
   end
 

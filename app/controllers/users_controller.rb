@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update]
-  before_action :correct_user,   only: [ :edit, :update]
+  #before_action :logged_in_user, only: [:show, :index, :edit, :update]
+  before_action :correct_user,   only: [:show, :edit, :update]
 
   def index
     @length = User.all.length
@@ -18,6 +18,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
       log_in @user
+      #UserMailer.account_activation(@user).deliver_now
+      #flash[:info] = "Please check your email to activate your account."
+      #redirect_to root_url
       render 'show'
     else
       render 'new'
@@ -41,15 +44,6 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:first, :last, :email, :password)
-    end
-
-    # Confirms a logged-in user.
-    def logged_in_user
-      unless logged_in?
-        store_location #right before redirecting to log_in
-        #flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
     end
 
     # Confirms that it is the right user.
