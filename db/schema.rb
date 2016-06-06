@@ -11,19 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606193959) do
+ActiveRecord::Schema.define(version: 20160606205419) do
 
   create_table "prospects", force: :cascade do |t|
     t.string   "email"
     t.text     "description"
     t.string   "pcode"
-    t.integer  "actual_id",   default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "actual_id",      default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "recommender_id"
   end
 
   add_index "prospects", ["email"], name: "index_prospects_on_email", unique: true
   add_index "prospects", ["pcode"], name: "index_prospects_on_pcode", unique: true
+  add_index "prospects", ["recommender_id"], name: "index_prospects_on_recommender_id"
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "recommender_id"
