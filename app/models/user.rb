@@ -3,6 +3,14 @@ class User < ActiveRecord::Base
   before_create :create_activation_digest
   before_save { self.email = email.downcase }
 
+  validates_length_of :recommending, maximum: 4 ## NO IDEA WHY IT ONLY STOPS VALIDATION AFTER ONE
+  has_many :active_relationships, class_name:  "Relationship",
+                                  foreign_key: "recommender_id"
+
+
+  has_many :recommending, through: :active_relationships, source: :recommended
+
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :first, :last, :email, presence: true

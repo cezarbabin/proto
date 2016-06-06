@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160604220404) do
+ActiveRecord::Schema.define(version: 20160606134852) do
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "recommender_id"
+    t.integer  "recommended_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "relationships", ["recommended_id"], name: "index_relationships_on_recommended_id"
+  add_index "relationships", ["recommender_id", "recommended_id"], name: "index_relationships_on_recommender_id_and_recommended_id", unique: true
+  add_index "relationships", ["recommender_id"], name: "index_relationships_on_recommender_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "first"
