@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606134852) do
+ActiveRecord::Schema.define(version: 20160606184801) do
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "recommender_id"
     t.integer  "recommended_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "prospect",       default: false
   end
 
   add_index "relationships", ["recommended_id"], name: "index_relationships_on_recommended_id"

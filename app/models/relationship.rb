@@ -13,7 +13,7 @@ class Relationship < ActiveRecord::Base
 
 
   def cant_recommend_yourself
-    if (recommender_id == recommended_id)
+    if (recommender_id == recommended_id && !prospect)
       errors.add(:recommended_id, "recommended and recommender can't be equal")
       errors.add(:recommended_id, "recommended and recommender can't be equal")
     end
