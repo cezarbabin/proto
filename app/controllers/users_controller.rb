@@ -41,6 +41,16 @@ class UsersController < ApplicationController
     end
   end
 
+  # Follows a user.
+  def recommend(other_user)
+    active_relationships.create(recommended_id: other_user.id)
+  end
+
+  # Returns true if the current user is following the other user.
+  def recommending?(other_user)
+    recommending.include?(other_user)
+  end
+
   private
     def user_params
       params.require(:user).permit(:first, :last, :email, :password)

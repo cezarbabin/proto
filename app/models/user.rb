@@ -6,10 +6,12 @@ class User < ActiveRecord::Base
   validates_length_of :recommending, maximum: 4 ## NO IDEA WHY IT ONLY STOPS VALIDATION AFTER ONE
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "recommender_id"
+  has_many :passive_relationships, class_name:  "Relationship",
+                                  foreign_key: "recommended_id"
 
 
   has_many :recommending, through: :active_relationships, source: :recommended
-
+  has_many :recommenders, through: :passive_relationships, source: :recommender
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
