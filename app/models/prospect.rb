@@ -41,7 +41,7 @@ class Prospect < ActiveRecord::Base
     end
 
     def havent_recommended
-      if (!Prospect.where(recommender_id: 1, email:'cita@me.com').empty?)
+      if (!Prospect.where(recommender_id: recommender_id, email:email).empty?)
         errors.add(:email, "already recommended this once")
       end
     end

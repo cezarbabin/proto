@@ -18,6 +18,10 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_template 'users/new'
   end
 
+  test "invalid prospect code" do
+
+  end
+
   test "valid signup information" do
     get signup_path
     assert_difference 'User.count', 1 do
@@ -48,8 +52,17 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert !user.activated?
     assert is_logged_in?
     assert user.reload.activated?
+
+    # See if the right templates are shown
     follow_redirect!
     assert_template 'users/show'
     assert is_logged_in?
+
+    # See if clicking on the link again brings out error
+    # get edit_account_activation_path(user.activation_token, email: user.email)
+    # follow_redirect!
+    # assert_select 'div#error_explanation'
+
+
   end
 end

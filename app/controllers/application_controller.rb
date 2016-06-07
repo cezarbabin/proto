@@ -6,13 +6,4 @@ class ApplicationController < ActionController::Base
   # will involved defining a large number of related functions for use
   # across multiple controllers and views
 
-  private
-    # Confirms a logged-in user.
-    def logged_in_user
-      unless logged_in?
-        store_location #right before redirecting to log_in
-        #flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
 end
