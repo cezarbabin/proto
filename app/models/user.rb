@@ -34,6 +34,11 @@ class User < ActiveRecord::Base
     BCrypt::Password.create(string, cost: cost)
   end
 
+  # Generates new token
+  def User.new_token
+    SecureRandom.urlsafe_base64
+  end
+
   # Activates an account.
   def activate
     update_attribute(:activated,    true)
@@ -59,22 +64,20 @@ class User < ActiveRecord::Base
     reset_sent_at < 2.hours.ago
   end
 
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+
+
   private
   # Returns a random token.
-    def User.new_token
-      SecureRandom.urlsafe_base64
-    end
-
     def create_activation_digest
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(activation_token)
     end
 
-    def authenticated?(attribute, token)
-      digest = send("#{attribute}_digest")
-      return false if digest.nil?
-      BCrypt::Password.new(digest).is_password?(token)
-    end
 
 
 end

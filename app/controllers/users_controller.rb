@@ -1,18 +1,15 @@
 class UsersController < ApplicationController
-  #before_action :logged_in_user, only: [:show, :index, :edit, :update]
+  before_action :logged_in_user, only: [:show, :index, :edit, :update]
   before_action :correct_user,   only: [:show, :edit, :update]
 
   def index
-    @length = User.all.length
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def new
     @user = User.new
-    @z = 7
   end
 
   def create

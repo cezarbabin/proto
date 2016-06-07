@@ -6,10 +6,6 @@ class ApplicationController < ActionController::Base
   # will involved defining a large number of related functions for use
   # across multiple controllers and views
 
-
-
-
-  before_filter :logged_in_user, only: [ :show, :index, :edit, :update]
   private
     # Confirms a logged-in user.
     def logged_in_user
