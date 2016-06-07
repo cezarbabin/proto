@@ -5,7 +5,9 @@
 
     Avaliable spots: <%= @z %>
     <h4>Recommend Prospect</h4>
-    <%=form_for(@relationship) do |f| %>
+    <%=bootstrap_form_for(@relationship) do |f| %>
+
+        <%= f.error_summary %>
 
         <%= f.email_field :email, onclick:"var x = document.getElementsByClassName('form-group')[2];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",

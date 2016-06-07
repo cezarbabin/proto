@@ -9,10 +9,17 @@ class Prospect < ActiveRecord::Base
   #validates :description, length: {maximum: 500, minimum: 100}
   validates :email, length: {maximum: 255},
             format: { with: VALID_EMAIL_REGEX },
-            uniqueness: { case_sensitive: false },
+            #uniqueness: { case_sensitive: false },
             :reduce => true
 
+  validates :recommender_id, uniqueness: { scope: :actual_id }
+
   validate :user_exists
+
+  validate :cant_recommend_yourself
+
+
+
 
   private
     # Returns a random token.
@@ -27,6 +34,14 @@ class Prospect < ActiveRecord::Base
 
     def user_exists
       errors.add(:recommender_id, "is invalid") unless User.exists?(recommender_id)
+    end
+
+    def cant_recommend_yourself
+      if (User.find(recommender_id).email == email)
+        errors.add(:email, "cant recommend yaself ya prick")
+        #errors.add(:recommended_id, "recommended and recommender can't be equal")
+      end
+      # add an appropriate error message here...
     end
 
 end

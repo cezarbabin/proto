@@ -11,14 +11,35 @@ class RelationshipsController < ApplicationController
   def create
     ##### NEED TO ESCAPE
     @relationship = Relationship.new
-    temporary = current_user.prospect_invitations.create(email:params[:relationship][:email])
-    @relationship = current_user.active_relationships.new(recommended_id:temporary.id, description:params[:relationship][:description], prospect: true)
-    #@relationship = Relationship.new(recommender_id:params[:relationship][:], recommended_id:current_user.id, prospect:true, description:params[:relationship][:description])
-    if @relationship.save
-      render 'show'
+    email = params[:relationship][:email]
+
+    prospect = Prospect.find_by(email:email)
+    if (!!prospect)
+      id = prospect.actual_id
+      temporary = current_user.prospect_invitations.new(email:email, actual_id:id)
+    else
+      id = 0
+      if (Prospect.exists?)
+        id = Prospect.last.id
+      end
+      temporary = current_user.prospect_invitations.new(email:email, actual_id:id)
+    end
+
+    if temporary.save
+
+      @relationship = current_user.active_relationships.new(recommended_id:temporary.actual_id, description:params[:relationship][:description], prospect: true)
+
+      if @relationship.save
+        render 'show'
+      else
+        Prospect.find(temporary.id).destroy
+        render 'new'
+      end
     else
       render 'new'
     end
+    
+
   end
 
   def edit
