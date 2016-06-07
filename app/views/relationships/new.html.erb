@@ -7,8 +7,11 @@
     <h4>Recommend Prospect</h4>
     <%=form_for(@relationship) do |f| %>
 
+        <%= f.email_field :email, onclick:"var x = document.getElementsByClassName('form-group')[2];
+        x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
+                          hide_label: true, placeholder:"Email" %>
 
-        <%= f.text_area :id, rows: '1',  hide_label: true,
+        <%= f.text_area :description, rows: '1',  hide_label: true,
                         onclick:"var x = document.getElementsByClassName('form-group')[1];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
                         placeholder:"Description" %>
