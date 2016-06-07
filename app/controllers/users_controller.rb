@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def index
     @length = User.all.length
-
   end
 
   def show
@@ -17,14 +16,11 @@ class UsersController < ApplicationController
   end
 
   def create
-
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
-      log_in @user
-      #UserMailer.account_activation(@user).deliver_now
-      #flash[:info] = "Please check your email to activate your account."
-      #redirect_to root_url
-      render 'show'
+      @user.send_activation_email
+      flash.now[:info] = "Please check your email to activate your account."
+      redirect_to root_url
     else
       render 'new'
     end
@@ -42,16 +38,6 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  # Follows a user.
-  def recommend(other_user)
-    active_relationships.create(recommended_id: other_user.id)
-  end
-
-  # Returns true if the current user is following the other user.
-  def recommending?(other_user)
-    recommending.include?(other_user)
   end
 
   private
