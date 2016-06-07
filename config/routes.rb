@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get 'signup' => 'users#new'
 
-  get 'invite' => 'relationships#new'
+  #get 'invite' => 'relationships#new'
 
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :users
   resources :test
   resources :account_activations, only: [:edit]
-  resources :relationships
+  resources :prospects
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

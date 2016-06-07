@@ -21,7 +21,7 @@
     <% if logged_in? %>
       <%= link_to "News", '#' %>
       | <%= link_to "Profile", edit_user_path(current_user) %>
-      | <%= link_to "Your list", invite_path %>
+      | <%= link_to "Your list", new_prospect_path %>
       | <%= link_to "Log out", logout_path, method: :delete %>
     <% else %>
        <%= link_to "Sign Up", signup_path %>

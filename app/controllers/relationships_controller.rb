@@ -11,7 +11,9 @@ class RelationshipsController < ApplicationController
   def create
     ##### NEED TO ESCAPE
     @relationship = Relationship.new
-    email = params[:relationship][:email]
+    email =       params[:relationship][:email]
+    description = params[:relationship][:description]
+
 
     prospect = Prospect.find_by(email:email)
     if (!!prospect)
@@ -27,7 +29,7 @@ class RelationshipsController < ApplicationController
 
     if temporary.save
 
-      @relationship = current_user.active_relationships.new(recommended_id:temporary.actual_id, description:params[:relationship][:description], prospect: true)
+      @relationship = current_user.active_relationships.new(recommended_id:temporary.actual_id, description:description, prospect: true)
 
       if @relationship.save
         render 'show'
@@ -38,7 +40,7 @@ class RelationshipsController < ApplicationController
     else
       render 'new'
     end
-    
+
 
   end
 

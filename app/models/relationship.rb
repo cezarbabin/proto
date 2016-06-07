@@ -11,6 +11,6 @@ class Relationship < ActiveRecord::Base
   validates :recommender_id, uniqueness: { scope: :recommended_id, message: "You have already recommended this person once" }
 
   #validates :description, length: {maximum: 500, minimum: 100}
-  validates :description, length: {minimum: 3}
+  #validates :description, length: {minimum: 3}
 
 end
