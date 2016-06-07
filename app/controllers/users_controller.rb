@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @length = User.all.length
+
   end
 
   def show
@@ -12,9 +13,11 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @z = 7
   end
 
   def create
+
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
       log_in @user

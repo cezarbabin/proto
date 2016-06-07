@@ -7,7 +7,6 @@ class Prospect < ActiveRecord::Base
   validates :email, presence: true
   validates :recommender_id, presence:true
   #validates :description, length: {maximum: 500, minimum: 100}
-  validates :description, length: { minimum: 5}
   validates :email, length: {maximum: 255},
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false },

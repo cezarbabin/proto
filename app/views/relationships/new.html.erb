@@ -1,0 +1,19 @@
+<% provide(:title, 'New Prospect') %>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+
+    Avaliable spots: <%= @z %>
+    <h4>Recommend Prospect</h4>
+    <%=form_for(@relationship) do |f| %>
+
+
+        <%= f.text_area :id, rows: '1',  hide_label: true,
+                        onclick:"var x = document.getElementsByClassName('form-group')[1];
+        x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
+                        placeholder:"Description" %>
+
+        <%= f.submit "Submit relationship", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
