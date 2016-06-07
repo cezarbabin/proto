@@ -39,6 +39,12 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     log_in_as(user)
     assert_not is_logged_in?
 
+    # Password reset before authorization
+    get new_password_reset_path
+    post password_resets_path, password_reset: { email: user.email }
+    assert_equal 1, ActionMailer::Base.deliveries.size
+
+
     # Invalid activation token
     get edit_account_activation_path("invalid token")
     assert_not is_logged_in?

@@ -14,11 +14,30 @@ class ProspectsController < ApplicationController
     email =       params[:prospect][:email]
     description = params[:prospect][:description]
 
-    @prospect = current_user.prospect_invitations.new(email:email)
-    @prospect.description = description
+    # If the user is new then create a prospect
+    @user = current_user.prospect_invitations.new(email:email)
+    @user.description = description
 
-    if @prospect.save
-      @relationship = current_user.active_relationships.new(recommended_id:@prospect.actual_id, description:description, prospect: true)
+    is_not_a_prospect = User.find_by(email:email)
+    if (!is_not_a_prospect)
+      prospect = true
+      id = @user.actual_id
+    else
+      prospect = false
+      id = is_not_a_prospect.id
+    end
+
+    if @user.save
+
+      @relationship = current_user.active_relationships.new(
+          recommended_id: id,
+          description:    description,
+          prospect:       prospect)
+
+      #HACK
+      if !is_not_a_prospect
+        @user.destroy
+      end
 
       if @relationship.save
         render 'new'

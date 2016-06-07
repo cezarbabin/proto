@@ -20,6 +20,7 @@ class ProspectsTest < ActionDispatch::IntegrationTest
                               }
     end
     assert_template 'prospects/new'
+    #check if the error marks under the form tabs come up
   end
 
   test "valid recommendation information" do
@@ -44,6 +45,7 @@ class ProspectsTest < ActionDispatch::IntegrationTest
       }
     end
     assert_template 'prospects/new'
+    #check if the error marks under the form tabs come up
   end
 
   test "recommending herself and giving bad description" do
@@ -56,6 +58,7 @@ class ProspectsTest < ActionDispatch::IntegrationTest
       }
     end
     assert_template 'prospects/new'
+    #check if the error marks under the form tabs come up
   end
 
   test "valid email with invalid description" do
@@ -68,6 +71,58 @@ class ProspectsTest < ActionDispatch::IntegrationTest
       }
     end
     assert_template 'prospects/new'
+  end
+
+  test "prospect is already an user" do
+    log_in_as(@user)
+    get new_prospect_path
+    assert_no_difference 'Prospect.count' do
+      post prospects_path, prospect: {
+          email:       @user2.email,
+          description: "already an user",
+      }
+    end
+  end
+
+  test "try and make more than 5 prospects" do
+    log_in_as(@user)
+    get new_prospect_path
+    assert_difference ['Prospect.count', 'Relationship.count'], 1 do
+      post prospects_path, prospect: {
+          email:       @user2.email+'z',
+          description: "already an user",
+      }
+    end
+    assert_difference ['Prospect.count', 'Relationship.count'], 1 do
+      post prospects_path, prospect: {
+          email:       @user2.email+'2',
+          description: "already an user",
+      }
+    end
+    assert_difference ['Prospect.count', 'Relationship.count'], 1 do
+      post prospects_path, prospect: {
+          email:       @user2.email+'3',
+          description: "already an user",
+      }
+    end
+    assert_difference ['Prospect.count', 'Relationship.count'], 1 do
+      post prospects_path, prospect: {
+          email:       @user2.email+'4',
+          description: "already an user",
+      }
+    end
+    assert_difference ['Prospect.count', 'Relationship.count'], 1 do
+      post prospects_path, prospect: {
+          email:       @user2.email+'5',
+          description: "already an user",
+      }
+    end
+    assert_no_difference ['Prospect.count', 'Relationship.count'] do
+      post prospects_path, prospect: {
+          email:       @user2.email+'6',
+          description: "already an user",
+      }
+    end
   end
 
 
