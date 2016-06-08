@@ -15,6 +15,7 @@ class Prospect < ActiveRecord::Base
   validate :havent_recommended
   validate :recommender_exists
   validate :cant_recommend_yourself
+  validate :nr_of_referrals
 
   def register
     update_attribute(:registered,    true)
@@ -25,10 +26,21 @@ class Prospect < ActiveRecord::Base
     update_attribute(:email_sent, Time.zone.now)
   end
 
+
+
   private
     # Returns a random token.
     def Prospect.new_token
       SecureRandom.urlsafe_base64
+    end
+
+    def nr_of_referrals
+      nr_of_referrals = Prospect.all.where(recommender_id:recommender_id).count +
+          Relationship.all.where(recommender_id:recommender_id).count
+
+      if (nr_of_referrals >= 5 && !User.find(recommender_id).admin)
+        errors.add(:email, 'you have exceeded the limit of referrals')
+      end
     end
 
     def create_pcode

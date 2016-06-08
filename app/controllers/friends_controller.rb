@@ -1,6 +1,7 @@
 class FriendsController < ApplicationController
   before_action :logged_in_user, only: [:show, :index, :edit, :update, :new]
 
+
   def new
   end
 
@@ -9,8 +10,9 @@ class FriendsController < ApplicationController
     #@user = User.new
     #current_user = User.find_by(id: session[:user_id])
 
-    email =       params[:friend][:email]
-    description = params[:friend][:description]
+    filtered_params = friend_params
+    email =       filtered_params[:email]
+    description = filtered_params[:description]
     user_exists = User.find_by(email:email)
 
     if (!!user_exists)
@@ -23,6 +25,9 @@ class FriendsController < ApplicationController
 
     nr_of_referrals = Prospect.all.where(recommender_id:current_user.id).count +
                         Relationship.all.where(recommender_id:current_user.id).count
+    if (current_user.admin)
+      nr_of_referrals = 0
+    end
 
     if (nr_of_referrals < 5)
 
@@ -57,6 +62,11 @@ class FriendsController < ApplicationController
         redirect_to login_url
       end
     end
+
+    def friend_params
+      params.require(:friend).permit(:email, :description)
+    end
+
 
 
 

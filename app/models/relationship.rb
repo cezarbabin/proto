@@ -11,8 +11,10 @@ class Relationship < ActiveRecord::Base
   validates :recommender_id, uniqueness: { scope: :recommended_id, message: "You have already recommended this person once" }
 
   validate :cant_recommend_yourself
+  validate :nr_of_referrals
   #validates :description, length: {maximum: 500, minimum: 100}
   validates :description, length: {minimum: 3}
+
 
   private
     def cant_recommend_yourself
@@ -21,5 +23,15 @@ class Relationship < ActiveRecord::Base
         #errors.add(:recommended_id, "recommended and recommender can't be equal")
       end
       # add an appropriate error message here...
+    end
+
+    def nr_of_referrals
+
+      nr_of_referrals = Prospect.all.where(recommender_id:recommender_id).count +
+          Relationship.all.where(recommender_id:recommender_id).count
+
+      if (nr_of_referrals >= 5 && !User.find(recommender_id).admin)
+        errors.add(:email, 'you have exceeded the limit of referrals')
+      end
     end
 end
