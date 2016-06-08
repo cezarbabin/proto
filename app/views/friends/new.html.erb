@@ -3,16 +3,16 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
 
-    <h4>Recommend Friend</h4>
+    <h4>Recommend Friend <h6>( <%= @left %> referrals left ) </h6></h4>
     <%=bootstrap_form_for(:friend, url:friends_path) do |f|  %>
 
-        <%= @left %> referrals left
+
 
         <%= f.email_field :email, onclick:"var x = document.getElementsByClassName('form-group')[2];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
                           hide_label: true, placeholder:"Email", class: 'form-control' %>
 
-        <%= f.text_area :description, rows: '1',  hide_label: true,
+        <%= f.text_area :description, rows: '10',  hide_label: true,
                         onclick:"var x = document.getElementsByClassName('form-group')[1];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
                         placeholder:"Description", class: 'form-control' %>
