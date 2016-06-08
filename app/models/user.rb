@@ -83,13 +83,13 @@ class User < ActiveRecord::Base
   end
 
   def check_personal_code
-    #prospect = Prospect.where(email:email).first
+    prospect = Prospect.where(email:email.downcase).first
     #puts self.pcode
-    prospect = Prospect.where(pcode:self.pcode).first
+    #prospect = Prospect.where(pcode:self.pcode).first
     if !prospect
       errors.add(:pcode, "Your personal code is not valid")
     end
-    if !!prospect && !(prospect.email == email)
+    if !!prospect && !(prospect.email == email.downcase)
       errors.add(:pcode, "your email does not correspond to the personal code")
     end
     if !!prospect && (prospect.registered == true)

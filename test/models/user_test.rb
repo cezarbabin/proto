@@ -5,11 +5,13 @@ class UserTest < ActiveSupport::TestCase
   #   assert true
   # end
   def setup
+    @user2 = users(:michael)
     @user = User.new(first: "Example", last: "User", email: "user@example.com",
                      password: "foobars")
   end
 
   test "should be valid" do
+    Prospect.create(recommender_id:@user2.id, email:'user@example.com', description: "good")
     assert @user.valid?
   end
 
@@ -32,6 +34,7 @@ class UserTest < ActiveSupport::TestCase
     valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
                          first.last@foo.jp alice+bob@baz.cn]
     valid_addresses.each do |valid_address|
+      Prospect.create(recommender_id:@user2.id, email:valid_address, description: "good")
       @user.email = valid_address
       assert @user.valid?, "#{valid_address.inspect} should be valid"
     end
