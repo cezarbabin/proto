@@ -16,6 +16,15 @@ class Prospect < ActiveRecord::Base
   validate :recommender_exists
   validate :cant_recommend_yourself
 
+  def register
+    update_attribute(:registered,    true)
+    update_attribute(:registered_at, Time.zone.now)
+  end
+
+  def update_email_sent
+    update_attribute(:email_sent, Time.zone.now)
+  end
+
   private
     # Returns a random token.
     def Prospect.new_token
@@ -60,9 +69,6 @@ class Prospect < ActiveRecord::Base
 
     end
 
-    def register
-      update_attribute(:registered,    true)
-      update_attribute(:registered_at, Time.zone.now)
-    end
+
 
 end

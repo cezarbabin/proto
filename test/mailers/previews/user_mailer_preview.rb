@@ -15,4 +15,9 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.reset_password(user)
   end
 
+  def invitation
+    prospect = Prospect.first
+    UserMailer.invitation(prospect)
+  end
+
 end

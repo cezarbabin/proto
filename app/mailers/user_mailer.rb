@@ -19,4 +19,11 @@ class UserMailer < ApplicationMailer
     @user = user
     mail to: user.email, subject: "Password reset"
   end
+
+  def invitation(prospect)
+    @prospect = prospect
+    @recommender = User.all.find_by(id:prospect.recommender_id)
+    prospect.update_email_sent
+    mail to: prospect.email, subject: "You have been tapped"
+  end
 end

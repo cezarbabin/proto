@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608170548) do
+ActiveRecord::Schema.define(version: 20160608175048) do
 
   create_table "prospects", force: :cascade do |t|
     t.string   "email"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160608170548) do
     t.boolean  "registered",     default: false
     t.datetime "registered_at"
     t.boolean  "pcode_is_valid", default: true
+    t.datetime "email_sent"
   end
 
   add_index "prospects", ["actual_id"], name: "index_prospects_on_actual_id"

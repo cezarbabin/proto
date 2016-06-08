@@ -32,7 +32,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                     email: email,
                                     password:              "",
                                     password_confirmation: "" }
-    assert_redirected_to @user
+    assert_template 'users/edit'
     @user.reload
     assert_equal first,  @user.first
     assert_equal last,  @user.last
