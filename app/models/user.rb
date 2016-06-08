@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :activation_token, :reset_token, :pcode
+  attr_accessor :activation_token, :reset_token
   before_create :create_activation_digest
   before_save { self.email = email.downcase }
 

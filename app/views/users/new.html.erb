@@ -34,11 +34,6 @@
 
         <%= f.password_field :password_confirmation, hide_label: true, placeholder:"Confirm Password", value: nil %>
 
-        <%= f.text_field :pcode, hide_label: true,
-                         onclick:"var x = document.getElementsByClassName('form-group')[5];
-        x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                         placeholder:"Personal Code", value: nil %>
-
         <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
   </div>

@@ -1,4 +1,5 @@
 class FriendsController < ApplicationController
+  before_action :logged_in_user, only: [:show, :index, :edit, :update, :new]
 
   def new
   end
@@ -35,8 +36,10 @@ class FriendsController < ApplicationController
         #@user.destroy
       #end
       if (@referral.save)
+        flash.now[:info] = 'Successfully submitted candidate'
         render 'new'
       else
+        flash.now[:error] = "Something went wrong"
         render 'new'
       end
     else
@@ -45,6 +48,15 @@ class FriendsController < ApplicationController
 
 
   end
+
+  private
+    def logged_in_user
+      unless logged_in?
+        store_location #right before redirecting to log_in
+        #flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
 
 
 

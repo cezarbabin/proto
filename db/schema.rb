@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608121741) do
+ActiveRecord::Schema.define(version: 20160608170548) do
 
   create_table "prospects", force: :cascade do |t|
     t.string   "email"
@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20160608121741) do
 
   add_index "prospects", ["actual_id"], name: "index_prospects_on_actual_id"
   add_index "prospects", ["email"], name: "index_prospects_on_email"
-  add_index "prospects", ["pcode"], name: "index_prospects_on_pcode", unique: true
   add_index "prospects", ["recommender_id"], name: "index_prospects_on_recommender_id"
 
   create_table "relationships", force: :cascade do |t|
