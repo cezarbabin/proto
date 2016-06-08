@@ -3,12 +3,17 @@ class FriendsController < ApplicationController
 
 
   def new
+    @left = 5 - Prospect.all.where(recommender_id:current_user.id).count -
+        Relationship.all.where(recommender_id:current_user.id).count
   end
 
   def create
     ##### NEED TO ESCAPE
     #@user = User.new
     #current_user = User.find_by(id: session[:user_id])
+
+    @left = 5 - Prospect.all.where(recommender_id:current_user.id).count -
+        Relationship.all.where(recommender_id:current_user.id).count
 
     filtered_params = friend_params
     email =       filtered_params[:email]
@@ -41,11 +46,11 @@ class FriendsController < ApplicationController
         #@user.destroy
       #end
       if (@referral.save)
-        flash.now[:info] = 'Successfully submitted candidate'
-        render 'new'
+        flash[:info] = 'Successfully submitted candidate'
+        redirect_to new_friend_path
       else
-        flash.now[:error] = "Something went wrong"
-        render 'new'
+        flash[:error] = "Something went wrong"
+        redirect_to new_friend_path
       end
     else
       render 'new'

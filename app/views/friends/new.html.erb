@@ -6,7 +6,7 @@
     <h4>Recommend Friend</h4>
     <%=bootstrap_form_for(:friend, url:friends_path) do |f|  %>
 
-
+        <%= @left %> referrals left
 
         <%= f.email_field :email, onclick:"var x = document.getElementsByClassName('form-group')[2];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
