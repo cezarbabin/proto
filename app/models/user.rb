@@ -87,13 +87,10 @@ class User < ActiveRecord::Base
     #puts self.pcode
     #prospect = Prospect.where(pcode:self.pcode).first
     if !prospect
-      errors.add(:pcode, "Your personal code is not valid")
-    end
-    if !!prospect && !(prospect.email == email.downcase)
-      errors.add(:pcode, "your email does not correspond to the personal code")
+      errors.add(:email, "you haven't been granted access to the platform")
     end
     if !!prospect && (prospect.registered == true)
-      errors.add(:pcode, "your personal code is not valid anymore")
+      errors.add(:email, "this email is already in use")
     end
 
   end
