@@ -1,5 +1,4 @@
 class Prospect < ActiveRecord::Base
-  attr_accessor :description
   before_create :create_pcode
   before_save { self.email = email.downcase }
   before_create :handle_duplicates
@@ -51,6 +50,7 @@ class Prospect < ActiveRecord::Base
       existing_prospect = Prospect.find_by(email:email)
       if (!!existing_prospect)
         self.actual_id = existing_prospect.actual_id
+        self.pcode = existing_prospect.pcode
       else
         self.actual_id = 0
         if Prospect.exists?
@@ -58,6 +58,11 @@ class Prospect < ActiveRecord::Base
         end
       end
 
+    end
+
+    def register
+      update_attribute(:registered,    true)
+      update_attribute(:registered_at, Time.zone.now)
     end
 
 end

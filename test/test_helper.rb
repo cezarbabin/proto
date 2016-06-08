@@ -26,6 +26,10 @@ class ActiveSupport::TestCase
     end
   end
 
+  def log_out_of_account
+    delete logout_path
+  end
+
   private
 
     # Returns true inside an integration test.

@@ -4,6 +4,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 
   def setup
     ActionMailer::Base.deliveries.clear
+    @user = users(:michael)
+
   end
 
   test "invalid signup information" do
@@ -22,14 +24,39 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 
   end
 
+  test "create a prospect" do
+    log_in_as(@user)
+    get new_friend_path
+    assert_difference 'Prospect.count', 1 do
+      post friends_path, friend: {
+          email:       "user@example.com",
+          description: "good description",
+      }
+    end
+    assert_template 'friends/new'
+    log_out_of_account
+    assert_not is_logged_in?
+    #pcode = Prospect.create(recommender_id: @user.id, email:'user@example.com').pcode
+  end
+
   test "valid signup information" do
+    log_in_as(@user)
+    get new_friend_path
+    assert_difference 'Prospect.count', 1 do
+      post friends_path, friend: {
+          email:       "user@example.com",
+          description: "good description",
+      }
+    end
+    log_out_of_account
     get signup_path
     assert_difference 'User.count', 1 do
       post users_path, user: { first:  "Example",
                                last: "User",
                                email: "user@example.com",
                                password:              "password",
-                               password_confirmation: "password" }
+                               password_confirmation: "password",
+                               pcode: @pcode}
     end
     assert_equal 1, ActionMailer::Base.deliveries.size
     user = assigns(:user)

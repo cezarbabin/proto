@@ -12,27 +12,32 @@
 
         <%= f.text_field :first, hide_label: true, onclick:"var x = document.getElementsByClassName('form-group')[0];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                         placeholder:"First Name"%>
+                         placeholder:"First Name", value: nil%>
 
 
         <%= f.text_field :last, hide_label: true,
                          onclick:"var x = document.getElementsByClassName('form-group')[1];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                         placeholder:"Last Name" %>
+                         placeholder:"Last Name", value: nil %>
 
 
         <%= f.email_field :email, onclick:"var x = document.getElementsByClassName('form-group')[2];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                          hide_label: true, placeholder:"Email" %>
+                          hide_label: true, placeholder:"Email", value: nil %>
 
 
         <%= f.password_field :password, hide_label: true,
                              onclick:"var x = document.getElementsByClassName('form-group')[3];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                             placeholder:"Password" %>
+                             placeholder:"Password" , value: nil%>
 
 
-        <%= f.password_field :password_confirmation, hide_label: true, placeholder:"Confirm Password" %>
+        <%= f.password_field :password_confirmation, hide_label: true, placeholder:"Confirm Password", value: nil %>
+
+        <%= f.text_field :pcode, hide_label: true,
+                         onclick:"var x = document.getElementsByClassName('form-group')[5];
+        x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
+                         placeholder:"Personal Code", value: nil %>
 
         <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>

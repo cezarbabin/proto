@@ -13,7 +13,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)    # Not the final implementation!
+    @user = User.new(user_params)
+
     if @user.save
       @user.send_activation_email
       flash.now[:info] = "Please check your email to activate your account."
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+
   end
 
   def edit
@@ -39,7 +41,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:first, :last, :email, :password)
+      params.require(:user).permit(:first, :last, :email, :password, :pcode)
     end
 
     # Confirms that it is the right user.

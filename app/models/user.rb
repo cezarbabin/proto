@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :activation_token, :reset_token
+  attr_accessor :activation_token, :reset_token, :pcode
   before_create :create_activation_digest
   before_save { self.email = email.downcase }
 
@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
                     :reduce => true
   has_secure_password
   validates :password, length: { minimum: 6 }, presence: true, :reduce => true, allow_nil: true
+  validate :check_personal_code, :on => :create
 
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -52,6 +53,12 @@ class User < ActiveRecord::Base
     UserMailer.account_activation(self).deliver_now
   end
 
+  # Updates the prospect table
+  def update_prospect_table
+    prospect = Prospect.where(pcode:self.pcode).first
+    prospect.register
+  end
+
   # Creates the password digest
   def create_reset_digest
     self.reset_token = User.new_token
@@ -73,6 +80,22 @@ class User < ActiveRecord::Base
     digest = send("#{attribute}_digest")
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  def check_personal_code
+    #prospect = Prospect.where(email:email).first
+    #puts self.pcode
+    prospect = Prospect.where(pcode:self.pcode).first
+    if !prospect
+      errors.add(:pcode, "Your personal code is not valid")
+    end
+    if !!prospect && !(prospect.email == email)
+      errors.add(:pcode, "your email does not correspond to the personal code")
+    end
+    if !!prospect && (prospect.registered == true)
+      errors.add(:pcode, "your personal code is not valid anymore")
+    end
+
   end
 
   private
