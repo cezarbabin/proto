@@ -35,7 +35,7 @@ class ProspectsController < ApplicationController
           prospect:       prospect)
 
       #HACK
-      if !is_not_a_prospect
+      if !!is_not_a_prospect
         @user.destroy
       end
 

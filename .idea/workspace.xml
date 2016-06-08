@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ce23d44-17cc-49d4-a391-bda344a73ef7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/password_resets_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/password_resets_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/prospects_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/prospects_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/prospect.rb" afterPath="$PROJECT_DIR$/app/models/prospect.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/integration/password_resets_test.rb" afterPath="$PROJECT_DIR$/test/integration/password_resets_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/relationship.rb" afterPath="$PROJECT_DIR$/app/models/relationship.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/integration/prospects_test.rb" afterPath="$PROJECT_DIR$/test/integration/prospects_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/integration/users_signup_test.rb" afterPath="$PROJECT_DIR$/test/integration/users_signup_test.rb" />
     </list>
     <ignored path="proto.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,11 +61,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="prospect.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="relationship.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/relationship.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="119" selection-start-line="20" selection-start-column="119" selection-end-line="20" selection-end-column="119" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="prospect.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/prospect.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
+            <state relative-caret-position="300">
+              <caret line="47" column="7" selection-start-line="42" selection-start-column="4" selection-end-line="47" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -77,8 +84,8 @@
       <file leaf-file-name="prospects_test.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/integration/prospects_test.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-250">
-              <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+            <state relative-caret-position="65">
+              <caret line="87" column="20" selection-start-line="87" selection-start-column="20" selection-end-line="87" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -87,8 +94,8 @@
       <file leaf-file-name="prospects_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/prospects_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+            <state relative-caret-position="-40">
+              <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -149,7 +156,6 @@
         <option value="$PROJECT_DIR$/db/migrate/20160607121341_add_email_index_to_prospects.rb" />
         <option value="$PROJECT_DIR$/app/views/relationships/new.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/relationships_controller.rb" />
-        <option value="$PROJECT_DIR$/app/models/relationship.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20160607160014_add_description_to_prospects.rb" />
         <option value="$PROJECT_DIR$/app/views/prospects/new.html.erb" />
         <option value="$PROJECT_DIR$/test/fixtures/prospects.yml" />
@@ -180,9 +186,10 @@
         <option value="$PROJECT_DIR$/test/integration/password_resets_test.rb" />
         <option value="$PROJECT_DIR$/test/integration/users_signup_test.rb" />
         <option value="$PROJECT_DIR$/app/controllers/password_resets_controller.rb" />
-        <option value="$PROJECT_DIR$/test/integration/prospects_test.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/prospects_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/prospect.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/prospects_controller.rb" />
+        <option value="$PROJECT_DIR$/test/integration/prospects_test.rb" />
+        <option value="$PROJECT_DIR$/app/models/relationship.rb" />
       </list>
     </option>
   </component>
@@ -449,12 +456,12 @@
       <option name="presentableId" value="Default" />
       <updated>1464953602092</updated>
       <workItem from="1464953603353" duration="70933000" />
-      <workItem from="1465298407386" duration="31864000" />
+      <workItem from="1465298407386" duration="33030000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102797000" />
+    <option name="totallyTimeSpent" value="103963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="409" y="23" width="1248" height="943" extended-state="0" />
@@ -542,14 +549,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="64" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/relationship.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -892,26 +891,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/integration/prospects_test.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/prospects_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-250">
-          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+        <state relative-caret-position="-40">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/prospects_controller.rb">
+    <entry file="file://$PROJECT_DIR$/test/integration/prospects_test.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+        <state relative-caret-position="65">
+          <caret line="87" column="20" selection-start-line="87" selection-start-column="20" selection-end-line="87" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/prospect.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
+        <state relative-caret-position="300">
+          <caret line="47" column="7" selection-start-line="42" selection-start-column="4" selection-end-line="47" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/relationship.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="119" selection-start-line="20" selection-start-column="119" selection-end-line="20" selection-end-column="119" />
           <folding />
         </state>
       </provider>

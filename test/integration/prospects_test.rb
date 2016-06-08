@@ -95,31 +95,31 @@ class ProspectsTest < ActionDispatch::IntegrationTest
     end
     assert_difference ['Prospect.count', 'Relationship.count'], 1 do
       post prospects_path, prospect: {
-          email:       @user2.email+'2',
+          email:       @user2.email+'m',
           description: "already an user",
       }
     end
     assert_difference ['Prospect.count', 'Relationship.count'], 1 do
       post prospects_path, prospect: {
-          email:       @user2.email+'3',
+          email:       @user2.email+'b',
           description: "already an user",
       }
     end
     assert_difference ['Prospect.count', 'Relationship.count'], 1 do
       post prospects_path, prospect: {
-          email:       @user2.email+'4',
+          email:       @user2.email+'o',
           description: "already an user",
       }
     end
     assert_difference ['Prospect.count', 'Relationship.count'], 1 do
       post prospects_path, prospect: {
-          email:       @user2.email+'5',
+          email:       @user2.email+'r',
           description: "already an user",
       }
     end
     assert_no_difference ['Prospect.count', 'Relationship.count'] do
       post prospects_path, prospect: {
-          email:       @user2.email+'6',
+          email:       @user2.email+'a',
           description: "already an user",
       }
     end
