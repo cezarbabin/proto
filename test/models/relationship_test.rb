@@ -5,7 +5,7 @@ class RelationshipTest < ActiveSupport::TestCase
   #   assert true
   # end
   def setup
-    @relationship = Relationship.new(recommender_id: 1, recommended_id: 2)
+    @relationship = Relationship.new(recommender_id: 1, recommended_id: 2, description:"valid")
   end
 
   test "should be valid" do
