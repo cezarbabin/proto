@@ -6,18 +6,22 @@
     <h4>Recommend Friend <h6>( <%= @left %> referrals left ) </h6></h4>
     <%=bootstrap_form_for(:friend, url:friends_path) do |f|  %>
 
-
-
-        <%= f.email_field :email, onclick:"var x = document.getElementsByClassName('form-group')[2];
+        <%= f.text_field :data, hide_label: true, onclick:"var x = document.getElementsByClassName('form-group')[0];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                          hide_label: true, placeholder:"Email", class: 'form-control' %>
+                         placeholder:"Name, email", value: nil%>
+
 
         <%= f.text_area :description, rows: '10',  hide_label: true,
-                        onclick:"var x = document.getElementsByClassName('form-group')[1];
+                        onclick:"var x = document.getElementsByClassName('form-group')[3];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                        placeholder:"Description", class: 'form-control' %>
+                        placeholder:"Phrases to describe", class: 'form-control' %>
+
+        <%= f.text_field :tags, onclick:"var x = document.getElementsByClassName('form-group')[2];
+        x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
+                          hide_label: true, placeholder:"Expertise tags", class: 'form-control' %>
 
         <%= f.submit "Submit relationship", class: "btn btn-primary" %>
+
     <% end %>
   </div>
 </div>

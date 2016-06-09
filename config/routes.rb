@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
+  get     'search' => 'posts#index'
+
   resources :users
   resources :test
   resources :account_activations, only: [:edit]

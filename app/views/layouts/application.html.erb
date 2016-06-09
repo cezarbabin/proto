@@ -19,7 +19,7 @@
   <div class="container" id="wrapper"">
 
     <% if logged_in? %>
-      <%= link_to "Search", '#' %>
+      <%= link_to "Search", search_path %>
       | <%= link_to "Profile", '#' %>
       | <%= link_to "Your list", new_friend_path %>
       | <%= link_to "Settings", edit_user_path(current_user) %>
@@ -31,19 +31,23 @@
     <hr>
 
     <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %>, try again.</div>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
 
   </div>
   <%= yield %>
-  <%= debug(params) if Rails.env.development? %>
+  <!-- %= debug(params) if Rails.env.development? % -->
   <hr>
 
-    <div class="container" id="wrapper">
-      <%= link_to "Howto",   root_path %>
+    <div class="container footer" id="footer" >
+      <%= link_to "How to",   root_path %>
       | <%= link_to "About",   about_path %>
       | <%= link_to "Contact",   contact_path %>
     </div>
+
+    <footer>
+      <small>© Copyright 2016, Senio Technologies</small>
+    </footer>
 
 
 </body>

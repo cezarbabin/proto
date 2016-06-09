@@ -1,10 +1,14 @@
 class Prospect < ActiveRecord::Base
+  attr_accessor :data, :tags
+
   before_create :create_pcode
   before_save { self.email = email.downcase }
   before_create :handle_duplicates
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
+
+  #validates :first, :last, length: {maximum: 50}
   validates :email, presence: true
   validates :recommender_id, presence:true
   validates :description, length: {minimum: 3}, :reduce => true

@@ -33,7 +33,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
           description: "good description",
       }
     end
-    assert_template 'friends/new'
+    #assert_template 'friends/new'
     log_out_of_account
     assert_not is_logged_in?
     #pcode = Prospect.create(recommender_id: @user.id, email:'user@example.com').pcode

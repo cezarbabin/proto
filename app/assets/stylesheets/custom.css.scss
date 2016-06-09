@@ -9,8 +9,17 @@ body {
   color: #333
 }
 
-a {
+#wrapper a {
   color: #0c8335 !important;
+}
+
+a {
+  color: #0c8335;
+
+}
+
+a:hover {
+  color: #0c8335;
 }
 
 #wrapper {
@@ -95,3 +104,35 @@ form label.error{
 }
 
 textarea { resize: none; }
+
+div .well {
+  border-color: #0c8335;
+  margin-top: 20px;
+}
+
+div .alert {
+  background-color: #ffffff;
+}
+
+#footer a{
+  color: #000000;
+  font-size: 12px;
+}
+
+#footer {
+  width: 500px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+footer {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  font-size: 10px;
+}
+
+a.link {
+  color:red;
+}

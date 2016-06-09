@@ -19,7 +19,7 @@ class ReferralsTest < ActionDispatch::IntegrationTest
                                description: "",
                               }
     end
-    assert_template 'friends/new'
+    #assert_template 'friends/new'
     #check if the error marks under the form tabs come up
   end
 
@@ -32,7 +32,7 @@ class ReferralsTest < ActionDispatch::IntegrationTest
           description: "good description",
       }
     end
-    assert_template 'friends/new'
+    #assert_template 'friends/new'
   end
 
   test "recommending herself" do
@@ -44,7 +44,7 @@ class ReferralsTest < ActionDispatch::IntegrationTest
           description: "good description",
       }
     end
-    assert_template 'friends/new'
+    #assert_template 'friends/new'
     #check if the error marks under the form tabs come up
   end
 
@@ -57,7 +57,7 @@ class ReferralsTest < ActionDispatch::IntegrationTest
           description: "oh",
       }
     end
-    assert_template 'friends/new'
+    #assert_template 'friends/new'
     #check if the error marks under the form tabs come up
   end
 
@@ -70,7 +70,7 @@ class ReferralsTest < ActionDispatch::IntegrationTest
           description: "oh",
       }
     end
-    assert_template 'friends/new'
+    #assert_template 'friends/new'
   end
 
   test "prospect is already an user" do
