@@ -1,13 +1,15 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
 
-    <h4>Post to your network </h4>
-    <%=bootstrap_form_for(:friend, url:friends_path) do |f|  %>
 
+
+    <%=bootstrap_form_for(:friend, url:friends_path) do |f|  %>
+        
         <%= f.text_area :description, rows: '5',  hide_label: true, :readonly => true,
                         onclick:"var x = document.getElementsByClassName('form-group')[3];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
                         placeholder:"Phrases to describe", class: 'form-control' %>
+
 
         <%= f.submit "Post", :disabled => true, class: "btn btn-primary" %>
 
