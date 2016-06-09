@@ -1,0 +1,27 @@
+<% provide(:title, "Edit user") %>
+
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+    <%= bootstrap_form_for(@profile) do |f| %>
+        <h4>Update your profile</h4>
+
+
+
+        <%= f.text_field :education, class: 'form-control', hide_label: true, placeholder:"Education" %>
+
+        <%= f.text_field :field_one, class: 'form-control', hide_label: true, placeholder:"Areas of expertise" %>
+
+        <%= f.text_field :field_four, class: 'form-control', hide_label: true, placeholder:"Skills" %>
+
+        <%= f.text_field :field_two, class: 'form-control', hide_label: true, placeholder:"Job experience" %>
+
+        <%= f.text_field :field_three, class: 'form-control',
+                         hide_label: true,
+                         placeholder:"Information sources (i.e. Techcrunch)"%>
+
+        <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+</div>

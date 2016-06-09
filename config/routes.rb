@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   get     'search' => 'posts#index'
 
+  resources :profiles
+
   resources :users
   resources :test
   resources :account_activations, only: [:edit]
