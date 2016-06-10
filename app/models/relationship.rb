@@ -35,10 +35,8 @@ class Relationship < ActiveRecord::Base
     end
 
     def nr_of_referrals
-
       nr_of_referrals = Prospect.all.where(recommender_id:recommender_id).count +
           Relationship.all.where(recommender_id:recommender_id).count
-
       if (nr_of_referrals >= 5 && !User.find(recommender_id).admin)
         errors.add(:email, 'you have exceeded the limit of referrals')
       end

@@ -28,8 +28,10 @@ class ReferralsTest < ActionDispatch::IntegrationTest
     get new_friend_path
     assert_difference 'Prospect.count', 1 do
       post friends_path, friend: {
-          email:       "czbabin@gmai.com",
+          email:       "czrabin@gmai.com",
           description: "good description",
+          firstName: 'cez',
+          lastName: 'bab'
       }
     end
     #assert_template 'friends/new'
@@ -91,48 +93,64 @@ class ReferralsTest < ActionDispatch::IntegrationTest
       post friends_path, friend: {
           email:       @user2.email+'z',
           description: "already an user",
+          firstName: 'cez',
+          lastName: 'bab'
       }
     end
     assert_difference [ 'Prospect.count'], 1 do
       post friends_path, friend: {
           email:       @user2.email+'m',
           description: "already an user",
+          firstName: 'cez',
+          lastName: 'bab'
       }
     end
     assert_difference ['Prospect.count'], 1 do
       post friends_path, friend: {
           email:       @user2.email+'b',
           description: "already an user",
+          firstName: 'cez',
+          lastName: 'bab'
       }
     end
     assert_difference ['Prospect.count'], 1 do
       post friends_path, friend: {
           email:       @user2.email+'o',
           description: "already an user",
+          firstName: 'cez',
+          lastName: 'bab'
       }
     end
     assert_difference [ 'Prospect.count'], 1 do
       post friends_path, friend: {
           email:       @user2.email+'r',
           description: "already an user",
+          firstName: 'cez',
+          lastName: 'bab'
       }
     end
     assert_no_difference ['Prospect.count'] do
       post friends_path, friend: {
           email:       @user2.email+'a',
           description: "already an user",
+          firstName: 'cez',
+          lastName: 'bab'
       }
     end
     assert_no_difference ['Relationship.count'] do
       post friends_path, friend: {
           email:       @user2.email+'s',
           description: "already an user",
+          firstName: 'cez',
+          lastName: 'bab'
       }
     end
     assert_no_difference ['Prospect.count'] do
       post friends_path, friend: {
           email:       @user2.email+'s',
           description: "already an user",
+          firstName: 'cez',
+          lastName: 'bab'
       }
     end
   end
