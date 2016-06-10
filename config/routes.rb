@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   resources :test
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :friends,             only: [:new, :create]
+  resources :prospects,             only: [:new, :create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

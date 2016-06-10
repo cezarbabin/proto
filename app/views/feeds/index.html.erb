@@ -20,6 +20,11 @@
     <% end %>
 
     <h3>Weekly Digest</h3>
+
+    <% if @posts.length == 0 %>
+        No posts to show you this week.
+    <% end %>
+
     <% @posts.each do |post| %>
       <div class="well"><article>
         <h4><%= post.title %></h4>

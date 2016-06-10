@@ -1,24 +1,35 @@
-<% provide(:title, 'New Prospect') %>
+<% provide(:title, 'New Referral') %>
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
 
-    Avaliable spots: <%= @z %>
-    <h4>Recommend Prospect</h4>
-    <%=bootstrap_form_for(@prospect, label_errors: false) do |f|  %>
 
-        <%= f.error_summary %>
+    <%=bootstrap_form_for(@referral) do |f|  %>
 
-        <%= f.email_field :email, onclick:"var x = document.getElementsByClassName('form-group')[2];
+        <h4>Recommend Friend <h6>( <%= @left %> referrals left ) </h6></h4>
+
+        <%= f.text_field :firstName, hide_label: true, placeholder: 'First Name',
+                         onclick:"var x = document.getElementsByClassName('form-group')[0];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                          hide_label: true, placeholder:"Email" %>
+                         class: 'form-control' %>
 
-        <%= f.text_area :description, rows: '1',  hide_label: true,
-                        onclick:"var x = document.getElementsByClassName('form-group')[1];
+        <%= f.text_field :lastName, hide_label: true, placeholder: 'Last Name',
+                         onclick:"var x = document.getElementsByClassName('form-group')[1];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                        placeholder:"Description" %>
+                         class: 'form-control' %>
+
+        <%= f.email_field :email, size:'36', hide_label: true, onclick:"var x = document.getElementsByClassName('form-group')[2];
+        x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
+                          placeholder:"Email", value: nil%>
+
+        <%= f.text_area :description, rows: '5', cols:'35', hide_label: true,
+                        onclick:"var x = document.getElementsByClassName('form-group')[3];
+        x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
+                        placeholder:"What are your friend's areas of expertise? Note that we are going to use this information in order to filter your network.", class: 'form-control' %>
 
         <%= f.submit "Submit relationship", class: "btn btn-primary" %>
+
     <% end %>
+
   </div>
 </div>

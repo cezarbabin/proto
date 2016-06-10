@@ -12,7 +12,7 @@ class FeedsController < ApplicationController
       @var = true;
     end
 
-    @posts = Post.all
+    @posts = Post.all.where(is_approved: true)
   end
 
   private

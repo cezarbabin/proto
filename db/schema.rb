@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610123827) do
+ActiveRecord::Schema.define(version: 20160610135554) do
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "title"
+    t.boolean  "is_approved", default: false
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
@@ -48,6 +49,9 @@ ActiveRecord::Schema.define(version: 20160610123827) do
     t.boolean  "pcode_is_valid",  default: true
     t.datetime "email_sent"
     t.text     "attributes_hash"
+    t.string   "fist"
+    t.string   "firstName"
+    t.string   "lastName"
   end
 
   add_index "prospects", ["actual_id"], name: "index_prospects_on_actual_id"

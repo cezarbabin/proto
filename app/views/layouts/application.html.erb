@@ -23,7 +23,7 @@
     <% if logged_in? %>
       <%= link_to "Search", feeds_path %>
       | <%= link_to "Profile", edit_profile_path(current_user) %>
-      | <%= link_to "Your list", new_friend_path %>
+      | <%= link_to "Your list", new_prospect_path %>
       | <%= link_to "Settings", edit_user_path(current_user) %>
       | <%= link_to "Log out", logout_path, method: :delete %>
     <% else %>

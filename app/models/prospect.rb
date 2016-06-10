@@ -8,7 +8,8 @@ class Prospect < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 
-  #validates :first, :last, length: {maximum: 50}
+  validates :firstName, :lastName, length: {maximum: 50}
+  validates :firstName, :lastName, presence: true
   validates :email, presence: true
   validates :recommender_id, presence:true
   #validates :description, length: {minimum: 3}, :reduce => true
