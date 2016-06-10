@@ -21,11 +21,11 @@
 
     <h3>Weekly Digest</h3>
 
-    <% if @posts.length == 0 %>
+    <% if @list_of_posts.length == 0 %>
         No posts to show you this week.
     <% end %>
 
-    <% @posts.each do |post| %>
+    <% @list_of_posts.each do |post| %>
       <div class="well"><article>
         <h4><%= post.title %></h4>
         <%= mail_to User.find(post.user_id).email, User.find(post.user_id).email %>
