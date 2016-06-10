@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     if @user.save
       @user.send_activation_email
-      @profile = Profile.create(user_id:@user.id)
+
 
       ## Transfer all prospects to relationships
 

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessor :activation_token, :reset_token
   before_create :create_activation_digest
   before_save { self.email = email.downcase }
+  after_save :update_profiles_table
 
   validates_length_of :recommending, maximum: 4 ## NO IDEA WHY IT ONLY STOPS VALIDATION AFTER ONE
 
@@ -94,6 +95,10 @@ class User < ActiveRecord::Base
       errors.add(:email, "this email is already in use")
     end
 
+  end
+
+  def update_profiles_table
+    @profile = Profile.create(user_id:id)
   end
 
   private
