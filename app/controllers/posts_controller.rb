@@ -14,13 +14,14 @@ class PostsController < ApplicationController
       redirect_to :back
     else
       @feed_items = []
+      flash[:danger] = 'Title or content cant be blank'
       redirect_to :back
     end
   end
 
   private
     def post_params
-      params.require(:post).permit(:post, :title)
+      params.require(:post).permit(:text, :title)
     end
 
 end

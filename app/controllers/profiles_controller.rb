@@ -1,6 +1,11 @@
 class ProfilesController < ApplicationController
 
+  before_action :logged_in_user, only: [:show, :index, :edit, :update]
+  before_action :correct_user,   only: [:show, :edit, :update]
+
   def edit
+    @nr_of_people = Relationship.where(recommended_id: current_user.id).count
+
     user = User.find(params[:id])
     @profile = Profile.find_by(user_id: user.id)
   end
@@ -24,5 +29,12 @@ class ProfilesController < ApplicationController
           :interests,
           :skills)
     end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless @user == current_user
+    end
+
+
 
 end

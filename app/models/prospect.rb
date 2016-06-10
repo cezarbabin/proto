@@ -11,7 +11,8 @@ class Prospect < ActiveRecord::Base
   #validates :first, :last, length: {maximum: 50}
   validates :email, presence: true
   validates :recommender_id, presence:true
-  validates :description, length: {minimum: 3}, :reduce => true
+  #validates :description, length: {minimum: 3}, :reduce => true
+  validate :description_length
   validates :email, length: {maximum: 255},
             format: { with: VALID_EMAIL_REGEX },
             :reduce => true
@@ -20,6 +21,8 @@ class Prospect < ActiveRecord::Base
   validate :recommender_exists
   validate :cant_recommend_yourself
   validate :nr_of_referrals
+
+  serialize :attributes_hash, Hash
 
   def register
     update_attribute(:registered,    true)
@@ -36,6 +39,12 @@ class Prospect < ActiveRecord::Base
     # Returns a random token.
     def Prospect.new_token
       SecureRandom.urlsafe_base64
+    end
+
+    def description_length
+      if (description.length < 4)
+        errors.add(:description, 'too short ma man')
+      end
     end
 
     def nr_of_referrals

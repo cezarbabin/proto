@@ -6,7 +6,7 @@
     <%=bootstrap_form_for(:post,:url => { :action => :create, :controller=> :posts }) do |f|  %>
 
 
-        <%= f.text_field :title, hide_label: true, onclick:"var x = document.getElementsByClassName('form-group')[0];
+        <%= f.text_field :title, hide_label: true, :readonly => @var, onclick:"var x = document.getElementsByClassName('form-group')[0];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
                          placeholder:"First Name", value: nil%>
 
@@ -19,15 +19,15 @@
         <%= f.submit "Post", :disabled => @var, class: "btn btn-primary" %>
     <% end %>
 
+    <h3>Weekly Digest</h3>
+    <% @posts.each do |post| %>
+      <div class="well"><article>
+        <h4><%= post.title %></h4>
+        <%= mail_to User.find(post.user_id).email, User.find(post.user_id).email %>
 
-
-        <h3>Weekly Digest</h3>
-
-        <div class="well"><article>
-          <h4>Hiring</h4>
-          <a href="mailto:query@pentalist.org?Subject=Hello%20again" target="_top">&lt;query@pentalist.org&gt;</a>
-          <p>We are hiring at Pentalist. NLP, Neural Networks, Scalable Platfoms, Neuroscience.</p>
-        </article></div>
+        <p><%= post.text %></p>
+      </article></div>
+    <% end %>
 
         <!--
 

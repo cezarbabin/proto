@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160609234404) do
+ActiveRecord::Schema.define(version: 20160610123827) do
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
@@ -38,15 +38,16 @@ ActiveRecord::Schema.define(version: 20160609234404) do
   create_table "prospects", force: :cascade do |t|
     t.string   "email"
     t.string   "pcode"
-    t.integer  "actual_id",      default: 0
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "actual_id",       default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "recommender_id"
     t.text     "description"
-    t.boolean  "registered",     default: false
+    t.boolean  "registered",      default: false
     t.datetime "registered_at"
-    t.boolean  "pcode_is_valid", default: true
+    t.boolean  "pcode_is_valid",  default: true
     t.datetime "email_sent"
+    t.text     "attributes_hash"
   end
 
   add_index "prospects", ["actual_id"], name: "index_prospects_on_actual_id"
@@ -56,10 +57,11 @@ ActiveRecord::Schema.define(version: 20160609234404) do
   create_table "relationships", force: :cascade do |t|
     t.integer  "recommender_id"
     t.integer  "recommended_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.boolean  "prospect",       default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "prospect",        default: false
     t.text     "description"
+    t.text     "attributes_hash"
   end
 
   add_index "relationships", ["recommended_id"], name: "index_relationships_on_recommended_id"

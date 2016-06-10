@@ -1,8 +1,11 @@
 class FriendsController < ApplicationController
   before_action :logged_in_user, only: [:show, :index, :edit, :update, :new]
+  before_action :correct_user,   only: [:show, :edit, :update]
+
 
 
   def new
+    @referral = Prospect.new
     @left = 5 - Prospect.all.where(recommender_id:current_user.id).count -
         Relationship.all.where(recommender_id:current_user.id).count
   end
@@ -28,13 +31,15 @@ class FriendsController < ApplicationController
       @referral = prospect
     end
 
-    nr_of_referrals = Prospect.all.where(recommender_id:current_user.id).count +
-                        Relationship.all.where(recommender_id:current_user.id).count
-    if (current_user.admin)
-      nr_of_referrals = 0
-    end
 
-    if (nr_of_referrals < 5)
+    #attributes_hash = {}
+    #attributes_hash[friend_params[:tags1]]=friend_params[:tags2];
+    #attributes_hash[friend_params[:tags3]]=friend_params[:tags4];
+    #attributes_hash[friend_params[:tags5]]=friend_params[:tags6];
+    #attributes_hash[friend_params[:tags7]]=friend_params[:tags8];
+    #attributes_hash[friend_params[:tags9]]=friend_params[:tags10];
+    #@referral.update_attributes(attributes_hash:attributes_hash)
+
 
       #@relationship = current_user.active_relationships.new(
           #recommended_id: id,
@@ -45,16 +50,16 @@ class FriendsController < ApplicationController
       #if !!is_not_a_prospect
         #@user.destroy
       #end
-      if (@referral.save)
-        flash[:info] = 'Successfully submitted candidate'
-        redirect_to new_friend_path
-      else
-        flash[:error] = "Something went wrong"
-        redirect_to new_friend_path
-      end
+    if (@referral.save)
+      flash[:info] = 'Successfully submitted candidate'
+      #render 'new'
+      redirect_to new_friend_path
     else
+      flash.now[:danger] = "Something went wrong"
       render 'new'
+      #redirect_to new_friend_path
     end
+
 
 
   end
@@ -69,7 +74,24 @@ class FriendsController < ApplicationController
     end
 
     def friend_params
-      params.require(:friend).permit(:email, :description)
+      params.require(:friend).permit(
+          :email,
+          :description,
+          :tags1,
+          :tags2,
+          :tags3,
+          :tags4,
+          :tags5,
+          :tags6,
+          :tags7,
+          :tags8,
+          :tags9,
+          :tags10)
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless @user == current_user
     end
 
 

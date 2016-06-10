@@ -13,10 +13,19 @@ class Relationship < ActiveRecord::Base
   validate :cant_recommend_yourself
   validate :nr_of_referrals
   #validates :description, length: {maximum: 500, minimum: 100}
-  validates :description, length: {minimum: 3}
+  validate :description_length
 
+  serialize :attributes_hash, Hash
 
   private
+
+    def description_length
+      if (description.length < 4)
+        errors.add(:description, 'too short ma man')
+      end
+    end
+
+
     def cant_recommend_yourself
       if (recommender_id == recommended_id)
         errors.add(:email, "cant recommend yaself ya prick")
