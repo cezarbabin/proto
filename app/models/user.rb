@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
                                   foreign_key: "recommended_id"
   has_many :prospect_invitations, class_name: "Prospect",
                                   foreign_key: "recommender_id"
+  has_many :posts
 
   has_many :recommending, through: :active_relationships, source: :recommended
   has_many :recommenders, through: :passive_relationships, source: :recommender

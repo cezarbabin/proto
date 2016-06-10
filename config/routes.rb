@@ -23,7 +23,9 @@ Rails.application.routes.draw do
 
   get     'search' => 'posts#index'
 
-  resources :profiles
+  resources :profiles,            only: [:edit, :update]
+  resources :feeds, only: [:index]
+  resources :posts, only: [:create]
 
   resources :users
   resources :test

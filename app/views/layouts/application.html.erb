@@ -21,7 +21,7 @@
   <div class="container" id="wrapper"">
 
     <% if logged_in? %>
-      <%= link_to "Search", search_path %>
+      <%= link_to "Search", feeds_path %>
       | <%= link_to "Profile", edit_profile_path(current_user) %>
       | <%= link_to "Your list", new_friend_path %>
       | <%= link_to "Settings", edit_user_path(current_user) %>
