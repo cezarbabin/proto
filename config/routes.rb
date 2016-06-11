@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
-  root 'static_pages#howto'
+  root 'static_pages#about'
 
   get 'howto' => 'static_pages#howto'
 

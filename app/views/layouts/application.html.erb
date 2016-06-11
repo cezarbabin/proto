@@ -16,16 +16,19 @@
 <body>
 
   <div class="container" id="wrapper"">
+     <%= link_to "Job listings", logout_path, method: :delete %>
+    | <%= link_to "Settings", edit_user_path(current_user) %>
+    | <%= link_to "Log out", logout_path, method: :delete %>
   <h1> pentalist </h1>
   </div>
   <div class="container" id="wrapper"">
-
+    <p></p>
     <% if logged_in? %>
-      <%= link_to "Search", feeds_path %>
-      | <%= link_to "Profile", edit_profile_path(current_user) %>
-      | <%= link_to "Your list", new_friend_path %>
-      | <%= link_to "Settings", edit_user_path(current_user) %>
-      | <%= link_to "Log out", logout_path, method: :delete %>
+       <%= link_to "Technical", feeds_path %>
+      | <%= link_to "Behavioral", edit_profile_path(current_user) %>
+      | <%= link_to "Profile", new_friend_path %>
+      | <%= link_to "Your network", edit_user_path(current_user) %>
+      | <%= link_to "News", logout_path, method: :delete %>
     <% else %>
        <%= link_to "Sign Up", signup_path %>
       | <%= link_to "Log in", login_path %>
@@ -42,13 +45,12 @@
   <hr>
 
     <div class="container footer" id="footer" >
-      <%= link_to "How to",   root_path %>
-      | <%= link_to "About",   about_path %>
-      | <%= link_to "Contact",   contact_path %>
+      <%= link_to "About",   about_path %>
+      | <%= mail_to 'query@pentalist.org', 'Contact' %>
     </div>
 
     <footer>
-      <small>© Copyright 2016, Senio Technologies</small>
+      <small>© Copyright 2016, Pentalist LLC</small>
     </footer>
 
 
