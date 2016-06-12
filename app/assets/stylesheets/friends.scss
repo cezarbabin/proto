@@ -1,3 +1,59 @@
 // Place all the styles related to the Friends controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  font-family: "Open Sans", Helvetica;
+}
+
+form {
+  text-align: center;
+
+}
+
+label {
+  display: block;
+  padding-top: 10px;
+}
+
+label input {
+  font-weight: lighter;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid #4A4A4A;
+  color: #000000;
+  font-size: 20px;
+  outline: 0;
+  padding: 5px;
+  transition: all 0.3s;
+  width: 300px;
+}
+
+textarea {
+  resize: none;
+  font-weight: lighter;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid #000000;
+  color: #000000;
+  font-size: 20px;
+  outline: 0;
+  transition: all 0.3s;
+  width: 300px;
+
+}
+
+#label-text{
+  color: red !important;
+}
+
+label input:focus {
+  max-width: 100%;
+  width: 400px;
+}
+
+textarea:focus{
+  max-width: 100%;
+  width: 600px;
+}
+
+
