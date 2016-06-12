@@ -10,21 +10,38 @@
       </div>
     <% end %>
 
-    <%= bootstrap_form_for(@profile) do |f| %>
-        <h4>Update your profile</h4>
+    <%= form_for(@profile) do |f| %>
+        <div class="form-title">Update your profile</div>
 
 
-        <%= f.text_field :education, class: 'form-control',  label:"Education" %>
-
-        <%= f.text_field :expertise, class: 'form-control', label:"Areas of expertise" %>
-
-        <%= f.text_field :interests, class: 'form-control', label:"Research interests" %>
-
-        <%= f.text_field :skills, class: 'form-control',  label:"Skills" %>
+      <form>
+        <label>
+        <%= f.text_field:education, class: 'form-control' %>
+        </label>
+        <div class="label-text" > Education </div>
 
 
+        <label>
+        <%= f.text_field :expertise, class: 'form-control' %>
+        </label>
+        <div class="label-text" > Areas of expertise </div>
 
-        <%= f.submit "Save changes", class: "btn btn-primary" %>
+
+        <label>
+        <%= f.text_field :interests, class: 'form-control'%></label>
+        <div class="label-text" > Research interests </div>
+
+
+        <label>
+        <%= f.text_field :skills, class: 'form-control' %>
+        </label>
+        <div class="label-text" > Skills </div>
+
+
+
+
+        <%= f.submit "Save changes", class: "custom-btn" %>
+      </form>
     <% end %>
 
   </div>

@@ -15,7 +15,7 @@ class FriendsController < ApplicationController
     filtered_params = friend_params
     email =       filtered_params[:email]
     description = filtered_params[:description]
-    first =       filtered_params[:firstName]
+    first =       filtered_params[:first_name]
     last =        filtered_params[:lastName]
     user_exists = User.find_by(email:email)
 
@@ -40,6 +40,11 @@ class FriendsController < ApplicationController
       end
 
     else
+
+      @friend.errors.each do |attribute, message|
+
+      end
+
       render 'new'
     end
 
@@ -58,7 +63,7 @@ class FriendsController < ApplicationController
     params.require(:friend).permit(
         :email,
         :description,
-        :firstName,
+        :first_name,
         :lastName)
   end
 

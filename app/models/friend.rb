@@ -2,7 +2,7 @@ class Friend
   include ActiveModel::Model
 
   attr_accessor :recommender_id
-  attr_accessor :email, :firstName, :lastName
+  attr_accessor :email, :first_name, :lastName
   attr_accessor :description
 
   #has_many :active_relationships, class_name:  "Relationship",
@@ -11,7 +11,7 @@ class Friend
   #has_many :prospect_invitations, class_name: "Prospect",
   #         foreign_key: "recommender_id"
 
-  validates :firstName, :lastName, :email, :description, presence:true
+  validates :first_name, :lastName, :email, :description, presence:true
 
 
   validate :relationship_exists
