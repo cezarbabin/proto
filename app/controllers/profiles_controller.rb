@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find_by(id: params[:id])
 
     if @profile.update_attributes(profile_params)
-      flash.now[:info] = "Succesfully updated your profile"
+      flash.now[:info] = "Successfully updated your profile"
       render 'edit'
     else
       render 'edit'

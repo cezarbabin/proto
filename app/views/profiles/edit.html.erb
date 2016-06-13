@@ -4,11 +4,6 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
 
-    <% if @nr_of_people > 1 %>
-      <div class="alert alert-info">
-      <%= @nr_of_people %> people think you are one the smartest people they met at UPenn.
-      </div>
-    <% end %>
 
     <%= form_for(@profile) do |f| %>
         <div class="form-title">Update your profile</div>

@@ -8,6 +8,11 @@
 
     <%=form_for(@friend) do |f|  %>
 
+        <div class="form-errors">
+          <%= @friend.errors.full_messages.first if @friend.errors.any? %>
+
+        </div>
+
 
         <form>
 
@@ -28,7 +33,7 @@
           <div class="label-text" > First Name </div>
 
         <label>
-        <%= f.text_field :lastName, hide_label: true,
+        <%= f.text_field :last_name, hide_label: true,
                          onclick:"var x = document.getElementsByClassName('form-group')[1];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
                           class: 'form-control' %>
@@ -55,10 +60,7 @@
 
         <%= f.submit "Submit relationship", class: "custom-btn" %>
 
-          <div class="form-errors">
-            <%= @friend.errors.full_messages.first if @friend.errors.any? %>
 
-          </div>
 
         </form>
 
