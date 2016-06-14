@@ -31,8 +31,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       post friends_path, friend: {
           email:       "user@example.com",
           description: "good description",
-          firstName: 'cez',
-          lastName: 'bab'
+          first_name: 'cez',
+          last_name: 'bab'
       }
     end
     #assert_template 'friends/new'
@@ -48,8 +48,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       post friends_path, friend: {
           email:       "user@example.com",
           description: "good description",
-          firstName: 'cez',
-          lastName: 'bab'
+          first_name: 'cez',
+          last_name: 'bab'
       }
     end
     log_out_of_account

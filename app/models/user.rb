@@ -85,11 +85,14 @@ class User < ActiveRecord::Base
   end
 
   def check_personal_code
-    prospect = Prospect.where(email:email.downcase).first
+    if (email?)
+      prospect = Prospect.where(email:email.downcase).first
+    end
+
     #puts self.pcode
     #prospect = Prospect.where(pcode:self.pcode).first
     if !prospect
-      errors.add(:email, "you haven't been granted access to the platform")
+      errors.add(:email, "has not been granted access to the platform.")
     end
     if !!prospect && (prospect.registered == true)
       errors.add(:email, "this email is already in use")

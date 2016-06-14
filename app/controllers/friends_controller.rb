@@ -15,11 +15,11 @@ class FriendsController < ApplicationController
     filtered_params = friend_params
     email =       filtered_params[:email]
     description = filtered_params[:description]
-    first =       filtered_params[:firstName]
-    last =        filtered_params[:lastName]
+    first =       filtered_params[:first_name]
+    last =        filtered_params[:last_name]
     user_exists = User.find_by(email:email)
 
-    @friend = Friend.new(recommender_id:current_user.id, description:description, email:email, firstName:first, lastName:last)
+    @friend = Friend.new(recommender_id:current_user.id, description:description, email:email, first_name:first, last_name:last)
 
     if @friend.valid?
 
@@ -32,7 +32,7 @@ class FriendsController < ApplicationController
       end
 
       if (@referral.save)
-        flash[:info] = 'Successfully submitted candidate'
+        flash[:info] = 'Submitted successfully'
         redirect_to new_friend_path
       else
         flash.now[:danger] = "Something went wrong"
@@ -40,6 +40,11 @@ class FriendsController < ApplicationController
       end
 
     else
+
+      @friend.errors.each do |attribute, message|
+
+      end
+
       render 'new'
     end
 
@@ -58,8 +63,8 @@ class FriendsController < ApplicationController
     params.require(:friend).permit(
         :email,
         :description,
-        :firstName,
-        :lastName)
+        :first_name,
+        :last_name)
   end
 
   def correct_user

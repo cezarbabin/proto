@@ -6,15 +6,22 @@
     <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
         <%= render 'shared/error_messages' %>
 
+
         <%= hidden_field_tag :email, @user.email %>
 
-        <%= f.label :password %>
+        <form>
+          <label>
         <%= f.password_field :password, class: 'form-control' %>
+          </label>
+          <div class="label-text" > Password </div>
 
-        <%= f.label :password_confirmation, "Confirmation" %>
+            <label>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
+          </label>
+          <div class="label-text" > Password </div>
 
-        <%= f.submit "Update password", class: "btn btn-primary" %>
+        <%= f.submit "Update password", class: "custom-btn" %>
+          </form>
     <% end %>
   </div>
 </div>

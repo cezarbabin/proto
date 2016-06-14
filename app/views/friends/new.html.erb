@@ -1,35 +1,67 @@
 <% provide(:title, 'New Referral') %>
 
-<div class="row">
+<div class="row" xmlns="http://www.w3.org/1999/html">
   <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
 
 
-    <%=bootstrap_form_for(@friend) do |f|  %>
 
 
-        <h4>Recommend Friend <h6>( <%= @left %> referrals left ) </h6></h4>
+    <%=form_for(@friend) do |f|  %>
 
-        <%= f.text_field :firstName, hide_label: true,
+        <div class="form-errors">
+          <%= @friend.errors.full_messages.first if @friend.errors.any? %>
+        </div>
+
+
+        <form>
+
+          <div class="form-title">
+            Add to cluster
+          </div>
+
+         <div class="referrals-left">
+           ( <%= @left %> left )
+         </div>
+
+
+        <label>
+        <%= f.text_field :first_name, hide_label: true,
                          onclick:"var x = document.getElementsByClassName('form-group')[0];
-        x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                         placeholder: 'First Name', class: 'form-control' %>
+        x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();" %>
+          </label>
+          <div class="label-text" > First Name </div>
 
-        <%= f.text_field :lastName, hide_label: true,
+        <label>
+        <%= f.text_field :last_name, hide_label: true,
                          onclick:"var x = document.getElementsByClassName('form-group')[1];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                         placeholder: 'Last Name', class: 'form-control' %>
+                          class: 'form-control' %>
+        </label>
+          <div class="label-text" > Last Name </div>
 
+          <label>
         <%= f.email_field :email, size:'36', hide_label: true,
                           onclick:"var x = document.getElementsByClassName('form-group')[2];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                          placeholder:"Email", value: nil%>
+                           value: nil%>
+          </label>
+          <div class="label-text" > Email </div>
 
-        <%= f.text_area :description, rows: '5', cols:'35', hide_label: true,
+        <label>
+        <%= f.text_area :description, rows: '3', cols:'35', hide_label: true, :class => "textarea",
                         onclick:"var x = document.getElementsByClassName('form-group')[3];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                        placeholder:"What is your friends' areas of expertise? Note that we are going to use this information in order to filter your network.", class: 'form-control' %>
+                        placeholder:"Tell us more about this person, what she or he does, what major, what qualities made you choose this person.", class: 'form-control' %>
+        </label>
+          <div class="label-text"> Review </div>
 
-        <%= f.submit "Submit relationship", class: "btn btn-primary" %>
+
+
+        <%= f.submit "Submit", class: "custom-btn" %>
+
+
+
+        </form>
 
     <% end %>
 

@@ -26,6 +26,10 @@ class UsersController < ApplicationController
       flash.now[:info] = "Please check your email to activate your account."
       redirect_to root_url
     else
+      @user.errors.each do |attribute, message|
+
+      end
+
       render 'new'
     end
 
@@ -37,11 +41,19 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      # Handle a successful update.
+    if no_prospect_with_this_email
+      if @user.update_attributes(user_params)
+        # Handle a successful update.
 
-      flash.now[:info] = "Succesfully updated your profile"
-      render 'edit'
+        flash.now[:info] = "Succesfully updated your profile"
+        render 'edit'
+      else
+        @user.errors.each do |attribute, message|
+
+        end
+
+        render 'edit'
+      end
     else
       render 'edit'
     end
@@ -56,6 +68,18 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless @user == current_user
+    end
+
+    def no_prospect_with_this_email
+      if (params[:user][:email] != nil)
+        prospect = Prospect.where(email:params[:user][:email].downcase).count
+        if (prospect != 0)
+          flash.now[:danger] = "Email is taken"
+          return false
+        end
+      end
+
+      return true
     end
 
 end
