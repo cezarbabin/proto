@@ -8,6 +8,9 @@
     <%= form_for(@profile) do |f| %>
         <div class="form-title">Update your profile</div>
 
+        <div class="form-errors">
+          <%= @profile.errors.full_messages.first if @profile.errors.any? %>
+        </div>
 
       <form>
         <label>
@@ -35,7 +38,7 @@
 
 
 
-        <%= f.submit "Save changes", class: "custom-btn" %>
+        <%= f.submit "Save", class: "custom-btn" %>
       </form>
     <% end %>
 
