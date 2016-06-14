@@ -16,11 +16,11 @@
         <form>
 
           <div class="form-title">
-            Recommend Friend
+            Add to cluster
           </div>
 
          <div class="referrals-left">
-           ( <%= @left %> referrals left )
+           ( <%= @left %> left )
          </div>
 
 
@@ -51,13 +51,13 @@
         <%= f.text_area :description, rows: '3', cols:'35', hide_label: true, :class => "textarea",
                         onclick:"var x = document.getElementsByClassName('form-group')[3];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                        placeholder:"Tell us more about your friend, what she or he does, what major, what qualities made you choose this person.", class: 'form-control' %>
+                        placeholder:"Tell us more about this person, what she or he does, what major, what qualities made you choose this person.", class: 'form-control' %>
         </label>
           <div class="label-text"> Review </div>
 
 
 
-        <%= f.submit "Submit relationship", class: "custom-btn" %>
+        <%= f.submit "Submit", class: "custom-btn" %>
 
 
 

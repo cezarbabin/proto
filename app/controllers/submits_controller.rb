@@ -1,0 +1,2 @@
+class SubmitsController < ApplicationController
+end
