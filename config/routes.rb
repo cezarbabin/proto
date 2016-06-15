@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'howto' => 'static_pages#howto'
 
-  get 'about' => 'static_pages#about'
+  get 'about', :to => redirect('/home.html'), :as => :about
 
   get 'contact' => 'static_pages#contact'
 

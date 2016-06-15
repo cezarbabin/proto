@@ -13,7 +13,13 @@
 
   <![endif]-->
 </head>
+
+<% if current_page?(about_path) %>
 <body>
+  <b>hello</b> hello
+</body>
+<% else %>
+  <body>
 
   <div class="navbar">
 
@@ -25,50 +31,53 @@
 
     <div class="container" id="header"">
 
-      <% if logged_in? %>
+    <% if logged_in? %>
 
 
         <% if !submitted? %>
             <%= link_to "Apply", new_submit_path %>
-           <%= link_to "Profile", edit_profile_path(current_user), style:'padding-left:20px' %>
-           <%= link_to "Cluster", new_friend_path, style:'padding-left:20px' %>
+            <%= link_to "Profile", edit_profile_path(current_user), style:'padding-left:20px' %>
+            <%= link_to "Cluster", new_friend_path, style:'padding-left:20px' %>
         <% end %>
-      <% else %>
-         <%= link_to "Sign Up", signup_path %>
+    <% else %>
+        <%= link_to "Sign Up", signup_path %>
         <%= link_to "Log in", login_path, style:'padding-left:20px'%>
-      <% end %>
-      <hr>
-
-    </div>
+    <% end %>
+    <hr>
 
   </div>
+  </div>
+
   <% flash.each do |message_type, message| %>
-    <div class="alert alert-<%= message_type %>"><%= message %></div>
-<% end %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
 
   <div id="yield">
-  <%= yield %>
+    <%= yield %>
   </div>
 
-
-
-    <div class="container" id="footer" >
-      <hr>
-      <% if logged_in? %>
+  <div class="container" id="footer" >
+    <hr>
+    <% if logged_in? %>
         <%= link_to "Log out", logout_path, method: :delete %>
 
-       <% if !submitted? %>
-        <%= link_to "Settings", edit_user_path(current_user),
-                    style:'padding-left:20px;
-                  ' %>
-              <% end %>
-      <% else %>
-          <footer>
-            <small>© Copyright 2016,  <%= link_to 'Pentalist LLC', "#"%></small>
-          </footer>
-      <% end %>
+        <% if !submitted? %>
+            <%= link_to "Settings", edit_user_path(current_user),
+                        style:'padding-left:20px;
+              ' %>
+        <% end %>
+    <% else %>
+        <footer>
+          <small>© Copyright 2016,  <%= link_to 'Pentalist LLC', "#"%></small>
+        </footer>
+    <% end %>
 
-    </div>
+  </div>
 
-</body>
+  </body>
+
+
+<% end %>
+
+
 </html>
