@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -87,4 +90,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  match '*path' => redirect('/'), via: :get
+
 end

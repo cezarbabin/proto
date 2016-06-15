@@ -21,6 +21,7 @@ a {
 	-webkit-transition: all 0.3s;
   	-moz-transition: all 0.3s;
   	transition: all 0.3s;
+    color:#2d993e;
 }
 a:hover, a:focus, a:active, a:visited {
     text-decoration: none;

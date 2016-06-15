@@ -6,7 +6,7 @@
 
 
     <%= form_for(@profile) do |f| %>
-        <div class="form-title"></div>
+        <div class="form-title"> Basic information</div>
 
         <div class="form-errors">
           <%= @profile.errors.full_messages.first if @profile.errors.any? %>
@@ -14,7 +14,7 @@
 
       <form>
         <label>
-        <%= f.text_field:education, class: 'form-control' %>
+        <%= f.text_field :education, class: 'form-control' %>
         </label>
         <div class="label-text" > Education </div>
 
@@ -35,6 +35,52 @@
         </label>
         <div class="label-text" > Skills </div>
 
+        <p> </p>
+
+        <div class="form-title"> Career interests </div>
+
+
+          <label>
+            <%= f.text_field :industry, class: 'form-control' %>
+          </label>
+          <div class="label-text" > Industry </div>
+
+
+          <label>
+            <%= f.text_field :company_size, class: 'form-control' %>
+          </label>
+          <div class="label-text" > Company size </div>
+
+
+          <label>
+            <%= f.text_field :company_age, class: 'form-control'%></label>
+          <div class="label-text" > Company age </div>
+
+
+          <label>
+            <%= f.text_field :salary, class: 'form-control' %>
+          </label>
+          <div class="label-text" > Salary </div>
+
+        <p></p>
+
+        <div class="form-title"> Open questions </div>
+
+        <label>
+          <%= f.text_area :o1, class: 'form-control', rows: '3', placeholder: 'What industries do you think will experience most growth in the next 10 years ? Why ?' %>
+        </label>
+
+        <label>
+          <%= f.text_area :o2, class: 'form-control', placeholder: 'What promising industries do you think are significantly underrated ? Why ?' %>
+        </label>
+
+        <label>
+          <%= f.text_area :o3, class: 'form-control', placeholder: 'If you had to pick another major, what would it be ?' %>
+        </label>
+
+        <label>
+          <%= f.text_area :o4, class: 'form-control', rows: '3', placeholder: 'Are you working on any side project ? If so, would you want Pentalist to suggest you people to work with ?' %>
+        </label>
 
 
 

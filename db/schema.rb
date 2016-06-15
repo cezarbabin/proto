@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615121229) do
+ActiveRecord::Schema.define(version: 20160615182022) do
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
@@ -25,13 +25,21 @@ ActiveRecord::Schema.define(version: 20160615121229) do
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "user_id"
     t.text     "education"
     t.text     "expertise"
     t.text     "skills"
     t.text     "interests"
+    t.text     "industry"
+    t.text     "company_size"
+    t.text     "company_age"
+    t.text     "salary"
+    t.text     "o1"
+    t.text     "o2"
+    t.text     "o3"
+    t.text     "o4"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
