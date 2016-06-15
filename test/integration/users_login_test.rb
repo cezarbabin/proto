@@ -10,9 +10,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     test "login with valid information" do
         get login_path
         post login_path, session: { email: @user.email, password: 'password' }
-        assert_redirected_to @user
+        assert_redirected_to new_submit_path
         follow_redirect!
-        assert_template 'users/show'
         assert_select "a[href=?]", login_path, count: 0
         assert_select "a[href=?]", logout_path
        
@@ -22,18 +21,20 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
         get login_path
         post login_path, session: { email: @user.email, password: 'password' }
         assert is_logged_in?
-        assert_redirected_to @user
+        assert_redirected_to new_submit_path
         follow_redirect!
-        assert_template 'users/show'
+
         # Asserting presence of the link
         assert_select "a[href=?]", login_path, count: 0 #there is NO link to LOGIN
         assert_select "a[href=?]", logout_path #there IS a link to LOGOUT
         delete logout_path
         assert_not is_logged_in?
+
         assert_redirected_to root_url
         follow_redirect!
+
         # Assert that there is no link to 'Your list' or 'Profile'
-        assert_select "a[href=?]", login_path
+        #assert_select "a[href=?]", login_path
         assert_select "a[href=?]", logout_path,      count: 0
         
     end

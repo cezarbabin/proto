@@ -42,7 +42,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if no_prospect_with_this_email
-      if @user.update_attributes(user_params)
+      return_value = user_params
+      return_value.delete :email
+      if @user.update_attributes(return_value)
         # Handle a successful update.
 
         flash.now[:info] = "Succesfully updated your profile"
@@ -61,7 +63,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:first, :last, :email, :password, :password_confirmation)
+      return_value = params.require(:user).permit(:first, :last, :email, :password, :password_confirmation)
     end
 
     # Confirms that it is the right user.

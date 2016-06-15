@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
 
   validates_length_of :recommending, maximum: 4 ## NO IDEA WHY IT ONLY STOPS VALIDATION AFTER ONE
 
-
-
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "recommender_id"
   has_many :passive_relationships, class_name:  "Relationship",
@@ -22,15 +20,38 @@ class User < ActiveRecord::Base
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
+
   validates :first, :last, :email, presence: true
   validates :first, :last, length: {maximum: 50}
   validates :email, length: {maximum: 255},
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false },
                     :reduce => true
+
+  validate :is_part_of_allowed_universities
   has_secure_password
   validates :password, length: { minimum: 6 }, presence: true, :reduce => true, allow_nil: true
-  validate :check_personal_code, :on => :create
+  #validate :check_personal_code, :on => :create
+
+  def downcase_email
+    self.email = email.downcase
+  end
+
+  def is_part_of_allowed_universities
+    downcase_email
+    emails = University.pluck(:name)
+    user_email = email
+    user_college = 'null'
+    for email_allowed in emails
+      if user_email.include? email_allowed
+        user_college = email_allowed
+      end
+    end
+    if user_college == 'null'
+      errors.add(:email, 'is not from an eligible university ')
+    end
+  end
+
 
   # Returns the hash digest of the given string.
   def User.digest(string)

@@ -30,6 +30,11 @@ module SessionsHelper
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
+  # Returns if the user's application was submitted
+  def submitted?
+    @current_user.submitted
+  end
+
   # Stores the URL trying to be accessed.
   def store_location
     session[:forwarding_url] = request.url if request.get?

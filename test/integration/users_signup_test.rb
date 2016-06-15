@@ -29,7 +29,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     get new_friend_path
     assert_difference 'Prospect.count', 1 do
       post friends_path, friend: {
-          email:       "user@example.com",
+          email:       "user@upenn.edu",
           description: "good description",
           first_name: 'cez',
           last_name: 'bab'
@@ -38,7 +38,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     #assert_template 'friends/new'
     log_out_of_account
     assert_not is_logged_in?
-    #pcode = Prospect.create(recommender_id: @user.id, email:'user@example.com').pcode
+    #pcode = Prospect.create(recommender_id: @user.id, email:'user@upenn.edu').pcode
   end
 
   test "valid signup information" do
@@ -46,7 +46,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     get new_friend_path
     assert_difference 'Prospect.count', 1 do
       post friends_path, friend: {
-          email:       "user@example.com",
+          email:       "usertiti@upenn.edu",
           description: "good description",
           first_name: 'cez',
           last_name: 'bab'
@@ -57,7 +57,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_difference 'User.count', 1 do
       post users_path, user: { first:  "Example",
                                last: "User",
-                               email: "user@example.com",
+                               email: "user@upenn.edu",
                                password:              "password",
                                password_confirmation: "password",
                             }

@@ -46,6 +46,11 @@
                            value: nil%>
           </label>
           <div class="label-text" > Email </div>
+          <div id="explanation">
+
+            Don't know the university email? Check  <a href=<%= @here %> target="_blank">here.</a>
+
+          </div>
 
         <label>
         <%= f.text_area :description, rows: '3', cols:'35', hide_label: true, :class => "textarea",
@@ -57,7 +62,8 @@
 
 
 
-        <%= f.submit "Submit", class: "custom-btn" %>
+
+        <%= f.submit "Add", class: "custom-btn" %>
 
 
 

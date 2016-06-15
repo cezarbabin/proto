@@ -6,12 +6,12 @@ class UserTest < ActiveSupport::TestCase
   # end
   def setup
     @user2 = users(:michael)
-    @user = User.new(first: "Example", last: "User", email: "user@example.com",
+    @user = User.new(first: "Example", last: "User", email: "user@upenn.edu",
                      password: "foobars")
   end
 
   test "should be valid" do
-    Prospect.create(recommender_id:@user2.id, email:'user@example.com', description: "good",firstName:'C', lastName:'B')
+    Prospect.create(recommender_id:@user2.id, email:'user@upenn.edu', description: "good",firstName:'C', lastName:'B')
     assert @user.valid?
   end
 
@@ -26,16 +26,16 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email should not be too long" do
-    @user.email = "a" * 244 + "@example.com"
+    @user.email = "a" * 254 + "@upenn.edu"
     assert_not @user.valid?
   end
 
   test "email validation should accept valid addresses" do
-    valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
-                         first.last@foo.jp alice+bob@baz.cn]
+    valid_addresses = %w[user@upenn.edu USER@upenn.edu A_US-ER@upenn.edu
+                         first.last@upenn.edu alice+bob@upenn.edu]
     valid_addresses.each do |valid_address|
       Prospect.create(recommender_id:@user2.id, email:valid_address, description: "good", firstName:'C', lastName:'B')
-      @user.email = valid_address
+      @user.update_attribute(:email, valid_address)
       assert @user.valid?, "#{valid_address.inspect} should be valid"
     end
   end

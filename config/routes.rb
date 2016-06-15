@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
-  root 'static_pages#about'
+  root 'home#root'
 
   get 'howto' => 'static_pages#howto'
 
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :friends,             only: [:new, :create]
+  resources :submits,             only: [:new, :create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

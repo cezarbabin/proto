@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
 
   before_action :logged_in_user, only: [:show, :index, :edit, :update]
   before_action :correct_user,   only: [:show, :edit, :update]
+  before_action :not_submitted,  only: [:show, :index, :edit, :update]
 
   def edit
     @nr_of_people = Relationship.where(recommended_id: current_user.id).count
@@ -33,6 +34,13 @@ class ProfilesController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless @user == current_user
+    end
+
+    def not_submitted
+
+      if current_user.submitted
+        redirect_to(root_url)
+      end
     end
 
 

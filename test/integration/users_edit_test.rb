@@ -29,14 +29,12 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     email = "foo@bar.com"
     patch user_path(@user), user: { first:  first,
                                     last: last,
-                                    email: email,
                                     password:              "",
                                     password_confirmation: "" }
     assert_template 'users/edit'
     @user.reload
     assert_equal first,  @user.first
     assert_equal last,  @user.last
-    assert_equal email, @user.email
   end
 
   test "successful edit with friendly forwarding" do

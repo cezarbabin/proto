@@ -34,9 +34,43 @@ class Prospect < ActiveRecord::Base
     update_attribute(:email_sent, Time.zone.now)
   end
 
+  validate :is_part_of_allowed_universities
+
 
 
   private
+
+    def downcase_email
+      self.email = email.downcase
+    end
+
+    def is_part_of_allowed_universities
+      downcase_email
+      emails = University.pluck(:name)
+      user_email = User.find(recommender_id).email
+      prospect_college = 'null'
+      for email_allowed in emails
+        if user_email.include? email_allowed
+          user_college = email_allowed
+        end
+      end
+      for email_allowed in emails
+        if email.include? email_allowed
+          prospect_college = email_allowed
+        end
+      end
+      if prospect_college == 'null'
+        errors.add(:email, "is not from an eligible university")
+      end
+      if prospect_college != user_college
+        errors.add(:email, "is not from the same university domain as you ")
+      end
+
+
+
+
+    end
+
     # Returns a random token.
     def Prospect.new_token
       SecureRandom.urlsafe_base64
@@ -94,7 +128,5 @@ class Prospect < ActiveRecord::Base
       end
 
     end
-
-
 
 end

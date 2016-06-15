@@ -28,7 +28,7 @@ class ReferralsTest < ActionDispatch::IntegrationTest
     get new_friend_path
     assert_difference 'Prospect.count', 1 do
       post friends_path, friend: {
-          email:       "czrabin@gmai.com",
+          email:       "czrabin@upenn.edu",
           description: "good description",
           first_name: 'cez',
           last_name: 'bab'
@@ -68,7 +68,7 @@ class ReferralsTest < ActionDispatch::IntegrationTest
     get new_friend_path
     assert_no_difference ['Prospect.count', 'Relationship.count'] do
       post friends_path, friend: {
-          email:       @user.email + 'ce',
+          email:       'ce' + @user.email,
           description: "oh",
       }
     end
@@ -89,9 +89,10 @@ class ReferralsTest < ActionDispatch::IntegrationTest
   test "try and make more than 5 prospects" do
     log_in_as(@user)
     get new_friend_path
+    assert_equal Prospect.count, 0
     assert_difference [ 'Prospect.count'], 1 do
       post friends_path, friend: {
-          email:       @user2.email+'z',
+          email:       'z' + @user2.email,
           description: "already an user",
           first_name: 'cez',
           last_name: 'bab'
@@ -99,7 +100,7 @@ class ReferralsTest < ActionDispatch::IntegrationTest
     end
     assert_difference [ 'Prospect.count'], 1 do
       post friends_path, friend: {
-          email:       @user2.email+'m',
+          email:       'm'+ @user2.email,
           description: "already an user",
           first_name: 'cez',
           last_name: 'bab'
@@ -107,7 +108,7 @@ class ReferralsTest < ActionDispatch::IntegrationTest
     end
     assert_difference ['Prospect.count'], 1 do
       post friends_path, friend: {
-          email:       @user2.email+'b',
+          email:       'b'+@user2.email,
           description: "already an user",
           first_name: 'cez',
           last_name: 'bab'
@@ -115,7 +116,7 @@ class ReferralsTest < ActionDispatch::IntegrationTest
     end
     assert_difference ['Prospect.count'], 1 do
       post friends_path, friend: {
-          email:       @user2.email+'o',
+          email:       'o' + @user2.email,
           description: "already an user",
           first_name: 'cez',
           last_name: 'bab'
@@ -123,7 +124,7 @@ class ReferralsTest < ActionDispatch::IntegrationTest
     end
     assert_difference [ 'Prospect.count'], 1 do
       post friends_path, friend: {
-          email:       @user2.email+'r',
+          email:       'r' + @user2.email,
           description: "already an user",
           first_name: 'cez',
           last_name: 'bab'
@@ -131,7 +132,7 @@ class ReferralsTest < ActionDispatch::IntegrationTest
     end
     assert_no_difference ['Prospect.count'] do
       post friends_path, friend: {
-          email:       @user2.email+'a',
+          email:       'a' + @user2.email,
           description: "already an user",
           first_name: 'cez',
           last_name: 'bab'
@@ -139,7 +140,7 @@ class ReferralsTest < ActionDispatch::IntegrationTest
     end
     assert_no_difference ['Relationship.count'] do
       post friends_path, friend: {
-          email:       @user2.email+'s',
+          email:       's' + @user2.email,
           description: "already an user",
           first_name: 'cez',
           last_name: 'bab'
@@ -147,7 +148,7 @@ class ReferralsTest < ActionDispatch::IntegrationTest
     end
     assert_no_difference ['Prospect.count'] do
       post friends_path, friend: {
-          email:       @user2.email+'s',
+          email:       's' + @user2.email,
           description: "already an user",
           first_name: 'cez',
           last_name: 'bab'

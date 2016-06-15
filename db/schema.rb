@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610135554) do
+ActiveRecord::Schema.define(version: 20160614215230) do
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
@@ -72,6 +72,15 @@ ActiveRecord::Schema.define(version: 20160610135554) do
   add_index "relationships", ["recommender_id", "recommended_id"], name: "index_relationships_on_recommender_id_and_recommended_id", unique: true
   add_index "relationships", ["recommender_id"], name: "index_relationships_on_recommender_id"
 
+  create_table "universities", force: :cascade do |t|
+    t.string   "name"
+    t.string   "directory"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "universities", ["name"], name: "index_universities_on_name", unique: true
+
   create_table "users", force: :cascade do |t|
     t.string   "first"
     t.string   "last"
@@ -87,6 +96,7 @@ ActiveRecord::Schema.define(version: 20160610135554) do
     t.boolean  "admin"
     t.integer  "post_id"
     t.datetime "post_created_at"
+    t.boolean  "submitted",         default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
