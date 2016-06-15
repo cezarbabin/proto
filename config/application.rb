@@ -25,5 +25,9 @@ module Proto
 
     # Load custom validators
     config.autoload_paths += %W["#{config.root}/app/validators/"]
+
+    # Add gzip
+    config.middleware.use Rack::Deflater
+
   end
 end
