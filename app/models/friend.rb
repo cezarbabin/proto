@@ -63,14 +63,14 @@ class Friend
     recommended_user = User.find_by(email:email)
     if (recommended_user != nil)
       if (Relationship.find_by(recommender_id:recommender_id, recommended_id:recommended_user.id)!=nil)
-        errors.add(:email, "owner has already been referred once")
+        errors.add(:email, "has already been added to the cluster")
       end
     end
   end
 
   def prospect_exists
     if(Prospect.find_by(recommender_id:recommender_id, email:email)!= nil)
-      errors.add(:email, "owner has already been referred once")
+      errors.add(:email, "has already been added to the cluster")
     end
   end
 
