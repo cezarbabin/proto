@@ -1,5 +1,5 @@
 Hi <%= @user.first_name %>,
 
-Welcome to Pentalist! Click on the link below to activate your account:
+Welcome to pentalist! Click on the link below to activate your account:
 
 <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

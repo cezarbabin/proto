@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :index, :edit, :update]
   before_action :correct_user,   only: [:show, :edit, :update]
+  before_action :logged_out_user, only: [:create, :new]
+
 
   def index
   end
@@ -81,6 +83,12 @@ class UsersController < ApplicationController
       end
 
       return true
+    end
+
+    def logged_out_user
+      if logged_in?
+        redirect_to root_url
+      end
     end
 
 end

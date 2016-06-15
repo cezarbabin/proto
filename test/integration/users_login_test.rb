@@ -30,7 +30,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
         delete logout_path
         assert_not is_logged_in?
 
-        assert_redirected_to root_url
+        assert_redirected_to login_url
         follow_redirect!
 
         # Assert that there is no link to 'Your list' or 'Profile'

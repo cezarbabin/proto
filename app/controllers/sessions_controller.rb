@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :logged_out_user, only: [:create, :index, :edit, :new]
+
   def new
   end
 
@@ -24,5 +26,11 @@ class SessionsController < ApplicationController
   def destroy
     log_out
     redirect_to login_url
+  end
+
+  def logged_out_user
+    if logged_in?
+      redirect_to root_url
+    end
   end
 end
