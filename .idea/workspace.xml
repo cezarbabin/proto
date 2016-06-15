@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ce23d44-17cc-49d4-a391-bda344a73ef7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/password_resets/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/password_resets/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/new.html.erb" afterPath="$PROJECT_DIR$/app/views/users/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/integration/password_resets_test.rb" afterPath="$PROJECT_DIR$/test/integration/password_resets_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/integration/users_signup_test.rb" afterPath="$PROJECT_DIR$/test/integration/users_signup_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/user_test.rb" afterPath="$PROJECT_DIR$/test/models/user_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
     </list>
     <ignored path="proto.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,7 +30,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="new.html.erb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="new.html.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/users/new.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -74,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="seeds.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="seeds.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db/seeds.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+            <state relative-caret-position="489">
+              <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -181,7 +177,6 @@
         <option value="$PROJECT_DIR$/db/migrate/20160615121229_change_first_and_last.rb" />
         <option value="$PROJECT_DIR$/app/views/user_mailer/account_activation.html.erb" />
         <option value="$PROJECT_DIR$/app/views/users/edit.html.erb" />
-        <option value="$PROJECT_DIR$/db/seeds.rb" />
         <option value="$PROJECT_DIR$/test/controllers/users_controller_test.rb" />
         <option value="$PROJECT_DIR$/test/fixtures/users.yml" />
         <option value="$PROJECT_DIR$/test/integration/users_edit_test.rb" />
@@ -193,6 +188,7 @@
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/views/password_resets/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/users/new.html.erb" />
+        <option value="$PROJECT_DIR$/db/seeds.rb" />
       </list>
     </option>
   </component>
@@ -455,12 +451,12 @@
       <workItem from="1465867324498" duration="1341000" />
       <workItem from="1465907508923" duration="1796000" />
       <workItem from="1465915036579" duration="8746000" />
-      <workItem from="1465929577997" duration="16555000" />
+      <workItem from="1465929577997" duration="16831000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229887000" />
+    <option name="totallyTimeSpent" value="230163000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="74" y="23" width="1287" height="943" extended-state="0" />
@@ -870,14 +866,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/controllers/users_controller_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -946,6 +934,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
           <folding />
         </state>
       </provider>

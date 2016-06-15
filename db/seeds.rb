@@ -28,11 +28,11 @@ university_list.each do |name, directory|
   University.create(name:name, directory:directory)
 end
 
-User.new(first_name:  "Example",
+User.create!(first_name:  "Example",
              last_name: "User",
              email: "example@upenn.edu",
-             password:              "foobar",
-             password_confirmation: "foobar",
+             password:              "foobarA9",
+             password_confirmation: "foobarA9",
              activated: true,
              activated_at: Time.zone.now)
 
@@ -40,8 +40,8 @@ User.new(first_name:  "Example",
   first  = Faker::Name.name
   last   = Faker::Name.name
   email = "example-#{n+1}@upenn.edu"
-  password = "password"
-  User.new(first_name:  first,
+  password = "passwordA9"
+  User.create!(first_name:  first,
                last_name: last,
                email: email,
                password:              password,
