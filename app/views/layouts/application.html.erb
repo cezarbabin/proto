@@ -14,11 +14,6 @@
   <![endif]-->
 </head>
 
-<% if current_page?(about_path) %>
-<body>
-  <b>hello</b> hello
-</body>
-<% else %>
   <body>
 
   <div class="navbar">
@@ -67,17 +62,15 @@
               ' %>
         <% end %>
     <% else %>
+        <%= link_to "About",about_path %>
         <footer>
-          <small>© Copyright 2016,  <%= link_to 'Pentalist LLC', "#"%></small>
+          <small>© Copyright 2016,  Pentalist LLC </small>
         </footer>
     <% end %>
 
   </div>
 
   </body>
-
-
-<% end %>
 
 
 </html>
