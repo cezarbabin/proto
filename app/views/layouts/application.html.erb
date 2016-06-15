@@ -53,8 +53,9 @@
 
   <div class="container" id="footer" >
     <hr>
+    <%= link_to "About",about_path %>
     <% if logged_in? %>
-        <%= link_to "Log out", logout_path, method: :delete %>
+        <%= link_to "Log out", logout_path, style:'padding-left:20px;', method: :delete %>
 
         <% if !submitted? %>
             <%= link_to "Settings", edit_user_path(current_user),
@@ -62,7 +63,6 @@
               ' %>
         <% end %>
     <% else %>
-        <%= link_to "About",about_path %>
         <footer>
           <small>© Copyright 2016,  Pentalist LLC </small>
         </footer>

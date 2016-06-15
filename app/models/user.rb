@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   before_create :create_activation_digest
   before_save { self.email = email.downcase }
   after_save :update_profiles_table
+  after_save :update_prospect_table
 
   validates_length_of :recommending, maximum: 4 ## NO IDEA WHY IT ONLY STOPS VALIDATION AFTER ONE
 
@@ -81,8 +82,10 @@ class User < ActiveRecord::Base
 
   # Updates the prospect table
   def update_prospect_table
-    prospect = Prospect.where(pcode:self.pcode).first
-    prospect.register
+    prospect = Prospect.find_by(email:email)
+    if  prospect != nil
+      prospect.update_attribute(:registered, true)
+    end
   end
 
   # Creates the password digest
