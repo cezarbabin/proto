@@ -1,6 +1,6 @@
 class SubmitsController < ApplicationController
 
-  before_action :logged_in_user, only: [:show, :index, :edit, :update]
+  before_action :logged_in_user, only: [:show, :index, :edit, :update, :new, :create]
 
   def new
     @nr_of_people = Prospect.where(recommender_id: current_user.id).count

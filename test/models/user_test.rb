@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
   # end
   def setup
     @user2 = users(:michael)
-    @user = User.new(first: "Example", last: "User", email: "user@upenn.edu",
+    @user = User.new(first_name: "Example", last_name: "User", email: "user@upenn.edu",
                      password: "foobars")
   end
 
@@ -16,12 +16,12 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "first name should be present" do
-    @user.first = "     "
+    @user.first_name = "     "
     assert_not @user.valid?
   end
 
   test "last name should be present" do
-    @user.last = "     "
+    @user.last_name = "     "
     assert_not @user.valid?
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614215230) do
+ActiveRecord::Schema.define(version: 20160615121229) do
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20160614215230) do
   add_index "universities", ["name"], name: "index_universities_on_name", unique: true
 
   create_table "users", force: :cascade do |t|
-    t.string   "first"
-    t.string   "last"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "email"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false

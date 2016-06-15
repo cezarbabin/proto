@@ -1,16 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 michael:
-  first: Michael
-  last: Example
+  first_name: Michael
+  last_name: Example
   email: michael@upenn.edu
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
 
 archer:
-  first: Sterling
-  last: Archer
+  first_name: Sterling
+  last_name: Archer
   email: duchess@upenn.edu
   password_digest: <%= User.digest('password') %>
   activated: true

@@ -63,7 +63,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      return_value = params.require(:user).permit(:first, :last, :email, :password, :password_confirmation)
+      return_value = params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
     end
 
     # Confirms that it is the right user.

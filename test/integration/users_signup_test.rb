@@ -11,8 +11,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   test "invalid signup information" do
     get signup_path
     assert_no_difference 'User.count' do
-      post users_path, user: { first:  "",
-                               last: "",
+      post users_path, user: { first_name:  "",
+                               last_name: "",
                                email: "",
                                password:              "",
                                password_confirmation: "" }
@@ -55,8 +55,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     log_out_of_account
     get signup_path
     assert_difference 'User.count', 1 do
-      post users_path, user: { first:  "Example",
-                               last: "User",
+      post users_path, user: { first_name:  "Example",
+                               last_name: "User",
                                email: "user@upenn.edu",
                                password:              "password",
                                password_confirmation: "password",

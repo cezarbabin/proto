@@ -28,8 +28,8 @@ university_list.each do |name, directory|
   University.create(name:name, directory:directory)
 end
 
-User.new(first:  "Example",
-             last: "User",
+User.new(first_name:  "Example",
+             last_name: "User",
              email: "example@upenn.edu",
              password:              "foobar",
              password_confirmation: "foobar",
@@ -41,8 +41,8 @@ User.new(first:  "Example",
   last   = Faker::Name.name
   email = "example-#{n+1}@upenn.edu"
   password = "password"
-  User.new(first:  first,
-               last: last,
+  User.new(first_name:  first,
+               last_name: last,
                email: email,
                password:              password,
                password_confirmation: password,

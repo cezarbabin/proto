@@ -38,7 +38,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test 'try to patch as stranger' do
     log_in_as(@user2)
-    patch :update, id: @user, user: {first:@user.first}
+    patch :update, id: @user, user: {first_name:@user.first_name}
     assert_redirected_to root_url
   end
 
@@ -46,10 +46,10 @@ class UsersControllerTest < ActionController::TestCase
     log_in_as(@user2)
     first  = "Foo Bar"
     email = "foo@bar.com"
-    patch :update, id: @user, user: {first:first, email:email}
+    patch :update, id: @user, user: {first_name:first, email:email}
     assert_redirected_to root_url
     @user.reload
-    assert_not_equal first,  @user.first
+    assert_not_equal first,  @user.first_name
     assert_not_equal email, @user.email
   end
 

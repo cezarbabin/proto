@@ -27,14 +27,14 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     first  = "Foo"
     last = " Bar"
     email = "foo@bar.com"
-    patch user_path(@user), user: { first:  first,
-                                    last: last,
+    patch user_path(@user), user: { first_name:  first,
+                                    last_name: last,
                                     password:              "",
                                     password_confirmation: "" }
     assert_template 'users/edit'
     @user.reload
-    assert_equal first,  @user.first
-    assert_equal last,  @user.last
+    assert_equal first,  @user.first_name
+    assert_equal last,  @user.last_name
   end
 
   test "successful edit with friendly forwarding" do
