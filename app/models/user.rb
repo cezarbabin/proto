@@ -30,7 +30,10 @@ class User < ActiveRecord::Base
 
   validate :is_part_of_allowed_universities
   has_secure_password
-  validates :password, length: { minimum: 6 }, presence: true, :reduce => true, allow_nil: true
+  validates :password, length: { minimum: 8 }, presence: true, :reduce => true, allow_nil: true
+  validate :has_uppercase_letters?
+  validate :has_downcase_letters?
+  validate :has_digits?
   #validate :check_personal_code, :on => :create
 
   def downcase_email
@@ -123,6 +126,36 @@ class User < ActiveRecord::Base
 
   def update_profiles_table
     @profile = Profile.create(user_id:id)
+  end
+
+  def has_uppercase_letters?
+    if password != nil
+      score = password.match(/[A-Z]/) ? 1 : 0
+      if score == 0
+        errors.add(:password, "Password needs to have uppercase letters")
+      end
+    end
+
+  end
+
+  def has_digits?
+    if password != nil
+      score = password.match(/\d/) ? 1 : 0
+      if score == 0
+        errors.add(:password, "Password needs to have digits")
+      end
+    end
+
+  end
+
+  def has_downcase_letters?
+    if password != nil
+      score = password.match(/[a-z]{1}/) ? 1 : 0
+      if score == 0
+        errors.add(:password, "Password needs to have downcase letters")
+      end
+    end
+
   end
 
   private

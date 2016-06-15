@@ -7,8 +7,8 @@
     <%= form_for(@user) do |f| %>
         <h3>Sign up </h3>
 
-        <div id="explanation" style="color:red;">
-          (you need a upenn.edu email address)
+        <div id="explanation">
+          (you need a <a link="#">valid</a> .edu email address)
         </div>
 
 
@@ -48,16 +48,16 @@
           <div class="label-text" > Email </div>
 
           <label>
-        <%= f.password_field :password, hide_label: true,
+        <%= f.password_field :password, hide_label: true, placeholder:"Needs digits, lowercase and uppercase letters", style:'font-size:12px;',
                              onclick:"var x = document.getElementsByClassName('form-group')[3];
         x.className = 'form-group'; x.getElementsByClassName('help-block')[0].remove();",
-                             value: nil%>
+                             value: nil %>
           </label>
           <div class="label-text" > Password </div>
 
 
           <label>
-        <%= f.password_field :password_confirmation, hide_label: true, value: nil %>
+        <%= f.password_field :password_confirmation, hide_label: true, value: nil, style:'font-size:12px;' %>
           </label>
           <div class="label-text" > Confirm Password </div>
 

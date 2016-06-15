@@ -58,8 +58,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       post users_path, user: { first_name:  "Example",
                                last_name: "User",
                                email: "user@upenn.edu",
-                               password:              "password",
-                               password_confirmation: "password",
+                               password:              "passwordA9",
+                               password_confirmation: "passwordA9",
                             }
     end
     assert_equal 1, ActionMailer::Base.deliveries.size
