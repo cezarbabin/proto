@@ -8,7 +8,9 @@ class ProfilesController < ApplicationController
     @nr_of_people = Relationship.where(recommended_id: current_user.id).count
 
     user = User.find(params[:id])
-    @profile = Profile.find_by(user_id: user.id)
+    if Profile.exists?(user.id)
+      @profile = Profile.find_by(user_id: user.id)
+    end
   end
 
   def update
@@ -32,8 +34,13 @@ class ProfilesController < ApplicationController
     end
 
     def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless @user == current_user
+      if User.exists?(params[:id])
+        @user = User.find(params[:id])
+        redirect_to(root_url) unless @user == current_user
+      else
+        redirect_to root_url
+      end
+
     end
 
     def not_submitted
