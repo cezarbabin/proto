@@ -39,11 +39,11 @@ university_list.each do |name, directory|
   University.create(name:name, directory:directory)
 end
 
-User.create!(first_name:  "Example",
-             last_name: "User",
-             email: "example@upenn.edu",
-             password:              "foobarA9",
-             password_confirmation: "foobarA9",
+User.create!(first_name:  "admin",
+             last_name: "admin",
+             email: "fatfeather@upenn.edu",
+             password:              "U6cu3NiJ",
+             password_confirmation: "U6cu3NiJ",
              activated: true,
              activated_at: Time.zone.now)
 
