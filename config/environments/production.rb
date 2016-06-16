@@ -85,7 +85,7 @@ Rails.application.configure do
   # EMAIL
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'pure-eyrie-29457.herokuapp.com'
+  host = 'pentalist.org'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
       :address        => 'smtp.sendgrid.net',
