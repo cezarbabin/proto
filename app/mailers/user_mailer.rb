@@ -26,4 +26,9 @@ class UserMailer < ApplicationMailer
     prospect.update_email_sent
     mail to: prospect.email, subject: "You have been tapped"
   end
+
+  def promo(prospect)
+    @prospect = prospect
+    mail to: prospect.email, subject: "Join us and get rid of your CV"
+  end
 end
