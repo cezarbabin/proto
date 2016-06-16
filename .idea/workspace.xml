@@ -102,8 +102,8 @@
       <file leaf-file-name="invitation.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/user_mailer/invitation.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="165">
+              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -599,12 +599,12 @@
       <workItem from="1465915036579" duration="8746000" />
       <workItem from="1465929577997" duration="19229000" />
       <workItem from="1466007189487" duration="10258000" />
-      <workItem from="1466076436849" duration="3110000" />
+      <workItem from="1466076436849" duration="3496000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="245929000" />
+    <option name="totallyTimeSpent" value="246315000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="413" y="28" width="1249" height="943" extended-state="0" />
@@ -1064,8 +1064,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/user_mailer/invitation.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state relative-caret-position="165">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
           <folding />
         </state>
       </provider>
