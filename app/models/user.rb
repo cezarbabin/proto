@@ -135,7 +135,7 @@ class User < ActiveRecord::Base
     if password != nil
       score = password.match(/[A-Z]/) ? 1 : 0
       if score == 0
-        errors.add(:password, "Password needs to have uppercase letters")
+        errors.add(:password, "needs to have uppercase letters")
       end
     end
 
@@ -145,7 +145,7 @@ class User < ActiveRecord::Base
     if password != nil
       score = password.match(/\d/) ? 1 : 0
       if score == 0
-        errors.add(:password, "Password needs to have digits")
+        errors.add(:password, "needs to have digits")
       end
     end
 
@@ -155,7 +155,7 @@ class User < ActiveRecord::Base
     if password != nil
       score = password.match(/[a-z]{1}/) ? 1 : 0
       if score == 0
-        errors.add(:password, "Password needs to have downcase letters")
+        errors.add(:password, "needs to have downcase letters")
       end
     end
 
